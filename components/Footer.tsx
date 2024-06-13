@@ -14,9 +14,7 @@ export default function Footer() {
                     Open GitHub repository.
                 </Link>
             </p>
-            <p className="pt-6">
-                &copy; {new Date().getFullYear()}. All rights reserved by Joe Choi.
-            </p>
+            <p className="pt-6">&copy; {new Date().getFullYear()}</p>
         </footer>
     );
 }
