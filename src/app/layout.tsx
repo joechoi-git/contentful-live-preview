@@ -23,7 +23,7 @@ export default function RootLayout({
         <html lang="en">
             <body className={inter.className}>
                 <main className="flex min-h-screen flex-col items-center justify-between p-12">
-                    <section className="w-full mx-auto container space-y-12 px-4 md:px-6 flex flex-col items-center justify-center space-y-8 max-w-[1200px] content-center">
+                    <section className="w-full mx-auto container space-y-12 px-4 md:px-6 flex flex-col items-center justify-center max-w-[1200px] content-center">
                         <div
                             id="control-panel"
                             className="border border-blue-500 rounded w-full p-4 flex gap-4 bg-slate-100"
