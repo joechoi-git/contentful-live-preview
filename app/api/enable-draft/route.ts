@@ -23,7 +23,10 @@ export async function GET(request: Request) {
 
     // If the slug doesn't exist prevent draft mode from being enabled
     if (!blog) {
-        return new Response("Blog not found", { status: 404 });
+        return new Response(
+            `Blog not found. If you believe that this slug "${slug}" is correct, try refreshing again.`,
+            { status: 404 }
+        );
     }
 
     // Enable Draft Mode by setting the cookie

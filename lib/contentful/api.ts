@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 export type Blog = {
     sys: {
         id: string;

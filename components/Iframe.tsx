@@ -35,7 +35,7 @@ const Iframe: React.FC<IframeProps> = ({ entryId }) => {
             content.id = "iframe-content";
             if (inIframe) {
                 content.classList.add("text-green-500");
-                content.innerHTML = `Viewing <strong>Inside</strong> Contentful.`;
+                content.innerHTML = "Viewing <strong>Inside</strong> Contentful.";
             } else {
                 content.classList.add("text-red-500");
                 content.innerHTML = `Viewing <strong>Outside</strong> Contentful. <a href="${previewUrl}" class="text-blue-500 underline">Open Live Preview</a>`;
