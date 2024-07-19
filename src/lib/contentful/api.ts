@@ -16,7 +16,8 @@ export type Blog = {
         url: string;
     };
     categoryName: string;
-    date: Date;
+    // date: Date;
+    date: string;
     details: {
         json: any;
     };
