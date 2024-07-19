@@ -1,4 +1,4 @@
-import { BlogProps, getAllBlogs } from "@/lib/contentful/api";
+import { BlogDetail, getAllBlogs } from "@/lib/contentful/api";
 import { draftMode } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,7 +9,7 @@ export const revalidate = 60;
 
 export default async function Home() {
     const { isEnabled } = draftMode();
-    const blogs: BlogProps[] = await getAllBlogs(20, isEnabled);
+    const blogs: BlogDetail[] = await getAllBlogs(20, isEnabled);
 
     let draft = 0;
     let published = 0;
@@ -36,7 +36,7 @@ export default async function Home() {
                 {blogs.length} articles ({draft} drafts and {published} published) found.
             </p>
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                {blogs.map((blog: BlogProps) => (
+                {blogs.map((blog: BlogDetail) => (
                     <article
                         key={blog.sys.id}
                         className="h-full flex flex-col rounded-lg shadow-lg overflow-hidden"
