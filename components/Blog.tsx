@@ -11,12 +11,13 @@ import {
     useContentfulInspectorMode,
     useContentfulLiveUpdates
 } from "@contentful/live-preview/react";
-import { BlogProps } from "@/lib/contentful/api";
+import type { BlogDetail, RelatedBlog } from "@/lib/contentful/api";
 import { renderOption, isoToFriendlyDate, isoToFriendlyDateTime } from "@/lib/contentful/options";
 import { ContentfulLivePreview } from "@contentful/live-preview";
 import Iframe from "../components/Iframe";
+import Card from "../components/Card";
 
-export const Blog = ({ blog }: { blog: BlogProps }) => {
+export const Blog = ({ blog }: { blog: BlogDetail }) => {
     const updatedBlog = useContentfulLiveUpdates(blog);
     const inspectorProps = useContentfulInspectorMode({ entryId: blog.sys.id });
 
@@ -49,7 +50,7 @@ export const Blog = ({ blog }: { blog: BlogProps }) => {
                     }
                     width="650"
                     {...ContentfulLivePreview.getProps({
-                        assetId: updatedBlog.heroImage?.sys.id || "",
+                        assetId: updatedBlog.heroImage?.sys?.id || "",
                         fieldId: "file"
                     })}
                 />
@@ -79,6 +80,22 @@ export const Blog = ({ blog }: { blog: BlogProps }) => {
                         ? documentToReactComponents(updatedBlog.details.json, renderOption)
                         : null}
                 </div>
+                {updatedBlog?.relatedBlogsCollection &&
+                    updatedBlog?.relatedBlogsCollection?.items?.length > 0 && (
+                        <div>
+                            <h2
+                                className="text-2xl font-bold tracking-tighter sm:text-5xl mb-8"
+                                {...inspectorProps({ fieldId: "relatedBlogs" })}
+                            >
+                                Related Blogs
+                            </h2>
+                            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                                {updatedBlog?.relatedBlogsCollection?.items?.map(
+                                    (blog: RelatedBlog) => <Card key={blog?.sys?.id} blog={blog} />
+                                )}
+                            </div>
+                        </div>
+                    )}
             </div>
         </>
     );

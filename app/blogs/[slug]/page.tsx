@@ -1,4 +1,4 @@
-import { BlogProps, getAllBlogs, getBlog } from "@/lib/contentful/api";
+import { BlogDetail, getAllBlogs, getBlog } from "@/lib/contentful/api";
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 import { Blog } from "@/components/Blog";
@@ -10,7 +10,7 @@ export const revalidate = 60;
 export async function generateStaticParams() {
     const allBlogs = await getAllBlogs();
 
-    return allBlogs.map((blog: BlogProps) => ({
+    return allBlogs.map((blog: BlogDetail) => ({
         slug: blog.slug
     }));
 }
