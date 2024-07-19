@@ -7,12 +7,13 @@
         "start": "next start",
         "lint": "next lint",
         "setup": "node ./lib/contentful/setup.js",
-        "format": "prettier --write ./**/*.{js,jsx,ts,tsx,css,md,json} --config ./.prettierrc.json"
+        "format": "prettier --write ./**/*.{ts,tsx,css,md,json} --config ./.prettierrc.json",
+        "prepare": "husky"
     },
     "dependencies": {
-        "@contentful/live-preview": "^3.1.0",
-        "@contentful/rich-text-react-renderer": "^15.19.4",
-        "next": "14.1.1",
+        "@contentful/live-preview": "^3",
+        "@contentful/rich-text-react-renderer": "^15",
+        "next": "^14",
         "react": "^18",
         "react-dom": "^18"
     },
@@ -20,13 +21,14 @@
         "@types/node": "^20",
         "@types/react": "^18",
         "@types/react-dom": "^18",
-        "autoprefixer": "^10.0.1",
-        "contentful-import": "^9.4.38",
+        "autoprefixer": "^10",
+        "contentful-import": "^9",
         "eslint": "^8",
-        "eslint-config-next": "14.1.0",
+        "eslint-config-next": "14",
+        "husky": "^9",
         "postcss": "^8",
-        "prettier": "^3.3.1",
-        "tailwindcss": "^3.3.0",
+        "prettier": "^3",
+        "tailwindcss": "^3",
         "typescript": "^5"
     }
 }
