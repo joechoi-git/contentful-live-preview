@@ -22,15 +22,11 @@ export default async function Home() {
     return (
         <>
             <Iframe />
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl">
-                    Research Library
-                </h1>
-                <p className="text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
-                    Explore the latest innovations, clinical trials and research articles
-                </p>
-            </div>
-            <p className="md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
+            <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl">Research Library</h1>
+            <p className="text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
+                Explore the latest innovations, clinical trials and research articles
+            </p>
+            <p className="my-6 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400">
                 {blogs.length} articles ({draft} drafts and {published} published) found.
             </p>
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">

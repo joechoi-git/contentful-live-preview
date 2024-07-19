@@ -20,7 +20,7 @@ const Card: React.FC<CardProps> = ({ blog }) => {
                     width="350"
                 />
             </Link>
-            <div className="flex-1 p-6">
+            <div className={`flex-1 p-6 ${blog.sys.publishedAt ? "bg-slate-50" : "bg-slate-300"}`}>
                 <Link href={`/blogs/${blog.slug}`}>
                     <h3 className="text-2xl font-bold leading-tight text-zinc-900 dark:text-zinc-50 py-4">
                         {blog.title}

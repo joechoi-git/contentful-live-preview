@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer Component renders correctly 1`] = `
+<DocumentFragment>
+  <footer
+    class="mt-6 w-full text-center border-t border-slate-300 py-6"
+  >
+    <p>
+      This is a sample app built to demonstrate the Contentful Live Preview feature.
+    </p>
+    <p>
+      <a
+        class="text-blue-500"
+        href="https://github.com/joechoi-git/contentful-live-preview"
+        target="_blank"
+      >
+        Open GitHub repository.
+      </a>
+    </p>
+    <p
+      class="pt-6"
+    >
+      © 2024
+    </p>
+  </footer>
+</DocumentFragment>
+`;

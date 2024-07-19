@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Footer() {
     return (
-        <footer className="w-full text-center border-t border-slate-300 pt-12">
+        <footer className="mt-6 w-full text-center border-t border-slate-300 py-6">
             <p>This is a sample app built to demonstrate the Contentful Live Preview feature.</p>
             <p>
                 <Link
