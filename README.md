@@ -11,15 +11,55 @@ The project is built using TypeScript, Next.js, and TailwindCSS.
 ![Screenshot](./img/screenshot1.png)
 ![Screenshot](./img/screenshot2.png)
 
-## Step 1. Installation
+## Available Scripts
 
-Install the dependencies:
+In the project directory, you can run:
 
-```bash
-npm install
-```
+### `npm install`
 
-## Step 2. Environment variables
+Installs dependencies.
+
+### `npx husky init`
+
+One-time Husky setup to enable the pre-commit Git hook. After running this command, copy and paste the content of the `./husky/pre-commit.md` into `./husky/pre-commit`.
+
+### `npm update`
+
+Updates dependencies.
+
+### `npm run dev`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
+
+### `npm run build`
+
+Builds the production version of the app.
+
+### `npm run analyze`
+
+Runs the Next.js bundle analyzer.
+
+### `npm run format`
+
+Formats the files with Prettier.
+
+### `npm run lint`
+
+Runs the ES Lint checker.
+
+### `npm run test`
+
+Runs the Jest unit testing.
+
+### `npm run test:update`
+
+Updates the snapshots.
+
+## Environment variables
 
 To run this project, you will need to add the following environment variables to your `.env.local` file:
 
@@ -31,10 +71,11 @@ In your Contentful dashboard go to **Settings > API keys** and copy the variable
 -   `CONTENTFUL_PREVIEW_SECRET`: This can be any value you want. It must be URL friendly as it will be send as a query parameter to enable draft mode.
 -   `CONTENTFUL_REVALIDATION_SECRET`: This can be any value you want. This will be the value you pass in as a secret header from the Contentful Webhook settings to use On-Demand Revalidation.
 -   `NEXT_PUBLIC_CONTENTFUL_PREVIEW_ID`: This is the last unique value from the URL you open the Live Preview.
+-   `NEXT_PUBLIC_CONTENTFUL_ENVIRONMENT`: This is the environment that you want to point to.
 
 ![Environment variables](./img/env-variables.png)
 
-## Step 3. Setting up the content model
+## Setting up the content model
 
 ### Run a script to create the content model
 
@@ -54,7 +95,7 @@ This command will create the needed content structure and set up your Contentful
 
 ```
 > cms-contentful@1.0.0 setup /Users/john.doe/documents/next-app-router
-> node ./contentful/setup.js $NEXT_PUBLIC_CONTENTFUL_SPACE_ID $CONTENTFUL_MANAGEMENT_TOKEN
+> node ./contentful/setup.ts $NEXT_PUBLIC_CONTENTFUL_SPACE_ID $CONTENTFUL_MANAGEMENT_TOKEN
 
 ┌──────────────────────────────────────────────────┐
 │ The following entities are going to be imported: │
