@@ -12,11 +12,11 @@ import {
     useContentfulInspectorMode,
     useContentfulLiveUpdates
 } from "@contentful/live-preview/react";
-import type { BlogDetail, RelatedBlog } from "@/lib/contentful/api";
-import { renderOption, isoToFriendlyDate, isoToFriendlyDateTime } from "@/lib/contentful/options";
+import type { BlogDetail, RelatedBlog } from "../lib/contentful/api";
+import { renderOption, isoToFriendlyDate, isoToFriendlyDateTime } from "../lib/contentful/options";
 import { ContentfulLivePreview } from "@contentful/live-preview";
-import Iframe from "../components/Iframe";
-import Card from "../components/Card";
+import Iframe from "./Iframe";
+import Card from "./Card";
 
 export const Blog = ({ blog }: { blog: BlogDetail }) => {
     const updatedBlog = useContentfulLiveUpdates(blog);

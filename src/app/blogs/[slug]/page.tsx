@@ -1,8 +1,8 @@
-import { BlogDetail, getAllBlogs, getBlog } from "@/lib/contentful/api";
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
-import { Blog } from "@/components/Blog";
-import { ContentfulPreviewProvider } from "@/components/ContentfulPreviewProvider";
+import { BlogDetail, getAllBlogs, getBlog } from "../../../lib/contentful/api";
+import { Blog } from "../../../components/Blog";
+import { ContentfulPreviewProvider } from "../../../components/ContentfulPreviewProvider";
 
 export const revalidate = 60;
 
