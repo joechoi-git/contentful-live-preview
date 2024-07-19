@@ -1,5 +1,6 @@
 "use client";
 
+// eslint-disable-next-line import/named
 import { ContentfulLivePreviewInitConfig } from "@contentful/live-preview";
 import { ContentfulLivePreviewProvider } from "@contentful/live-preview/react";
 import { PropsWithChildren } from "react";

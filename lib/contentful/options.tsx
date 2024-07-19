@@ -8,7 +8,9 @@ export const renderOption = {
             <p className="py-4 pt-4 [&>a]:text-blue-500">{children}</p>
         ),
         [BLOCKS.UL_LIST]: (node: any, children: any) => (
-            <ul className="list-disc pl-12">{children}</ul>
+            <ul className="list-disc" style={{ marginLeft: 50 }}>
+                {children}
+            </ul>
         ),
         [BLOCKS.OL_LIST]: (node: any, children: any) => (
             <ul className="list-decimal pl-12">{children}</ul>
