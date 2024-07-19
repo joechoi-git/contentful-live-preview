@@ -24,7 +24,7 @@ const customJestConfig = {
     },
     */
     collectCoverage: true,
-    collectCoverageFrom: ["src/**/*.{js,jsx,ts,tsx}"],
+    collectCoverageFrom: ["**/*.{js,jsx,ts,tsx}"],
     coveragePathIgnorePatterns: [
         "node_modules",
         "<rootDir>/src/app",
