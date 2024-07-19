@@ -11,7 +11,7 @@ import {
     useContentfulInspectorMode,
     useContentfulLiveUpdates
 } from "@contentful/live-preview/react";
-import { BlogDetail } from "@/lib/contentful/api";
+import type { BlogDetail, RelatedBlog } from "@/lib/contentful/api";
 import { renderOption, isoToFriendlyDate, isoToFriendlyDateTime } from "@/lib/contentful/options";
 import { ContentfulLivePreview } from "@contentful/live-preview";
 import Iframe from "../components/Iframe";
@@ -84,15 +84,14 @@ export const Blog = ({ blog }: { blog: BlogDetail }) => {
                     updatedBlog?.relatedBlogsCollection?.items?.length > 0 && (
                         <div>
                             <h2
-                                className="text-2xl font-bold tracking-tighter sm:text-5xl"
+                                className="text-2xl font-bold tracking-tighter sm:text-5xl mb-8"
                                 {...inspectorProps({ fieldId: "relatedBlogs" })}
                             >
                                 Related Blogs
                             </h2>
-
                             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                                {/*updatedBlog?.relatedBlogsCollection?.items?.map(
-                                    (blog: BlogProps) => (
+                                {updatedBlog?.relatedBlogsCollection?.items?.map(
+                                    (blog: RelatedBlog) => (
                                         <article
                                             key={blog.sys.id}
                                             className="h-full flex flex-col rounded-lg shadow-lg overflow-hidden"
@@ -146,10 +145,8 @@ export const Blog = ({ blog }: { blog: BlogDetail }) => {
                                             </div>
                                         </article>
                                     )
-                                )*/}
+                                )}
                             </div>
-
-                            {JSON.stringify(updatedBlog?.relatedBlogsCollection)}
                         </div>
                     )}
             </div>
