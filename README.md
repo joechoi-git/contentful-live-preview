@@ -8,8 +8,8 @@ The project is built using TypeScript, Next.js, and TailwindCSS.
 
 [Live example](https://contentful-live-preview-two.vercel.app/)
 
-![Screenshot](./img/screenshot1.png)
-![Screenshot](./img/screenshot2.png)
+![Screenshot](./public/screenshot1.png)
+![Screenshot](./public/screenshot2.png)
 
 ## Available Scripts
 
@@ -73,7 +73,7 @@ In your Contentful dashboard go to **Settings > API keys** and copy the variable
 -   `NEXT_PUBLIC_CONTENTFUL_PREVIEW_ID`: This is the last unique value from the URL you open the Live Preview.
 -   `NEXT_PUBLIC_CONTENTFUL_ENVIRONMENT`: This is the environment that you want to point to.
 
-![Environment variables](./img/env-variables.png)
+![Environment variables](./public/env-variables.png)
 
 ## Setting up the content model
 
@@ -95,7 +95,7 @@ This command will create the needed content structure and set up your Contentful
 
 ```
 > cms-contentful@1.0.0 setup /Users/john.doe/documents/next-app-router
-> node ./contentful/setup.ts $NEXT_PUBLIC_CONTENTFUL_SPACE_ID $CONTENTFUL_MANAGEMENT_TOKEN
+> node ./contentful/setup.js $NEXT_PUBLIC_CONTENTFUL_SPACE_ID $CONTENTFUL_MANAGEMENT_TOKEN
 
 ┌──────────────────────────────────────────────────┐
 │ The following entities are going to be imported: │
@@ -146,7 +146,7 @@ Save the content type and continue.
 
 **Content model overview**
 
-![Content model overview](./img/content-model.png)
+![Content model overview](./public/content-model.png)
 
 After successfully setting up the content model, make sure to populate some content in the **Content** tab.
 
@@ -163,7 +163,7 @@ http://localhost:3000/api/enable-draft?secret={CONTENTFUL_PREVIEW_SECRET}&slug={
 
 To securely manage your `CONTENTFUL_PREVIEW_SECRET` token, consider storing it as a [Custom preview token](https://www.contentful.com/developers/docs/tutorials/general/content-preview/#custom-%20preview-tokens) within Contentful. Alternatively, you can directly embed the token into the URL by replacing `{CONTENTFUL_PREVIEW_SECRET}` with its actual value found in the .env.local file.
 
-![Content preview setup](./img/content-preview.png)
+![Content preview setup](./public/content-preview.png)
 
 ## Step 5. Running the project
 
@@ -196,15 +196,15 @@ In your Contentful space, go to **Settings > Webhooks** and add a new webhook:
 -   **Specify Secret Header:** Add a secret header named `x-vercel-reval-key` and enter the value of the
     `CONTENTFUL_REVALIDATION_SECRET` environment variable from before.
 
-    ![Vercel secret header](./img/vercel-secret-header.png)
+    ![Vercel secret header](./public/vercel-secret-header.png)
 
 -   **Set Content type:** Set content type to `application/json` in the dropdown.
 
-    ![Vercel content type](./img/vercel-content-type.png)
+    ![Vercel content type](./public/vercel-content-type.png)
 
 -   **Custom payload:** Click on Customize the webhook payload to include the slug of the updated blog post. This way Vercel will only clear the cache of that specific blog post. You can either pass a long a tag or or a path. See [revalidate path](https://nextjs.org/docs/app/api-reference/functions/revalidatePath) and [revalidate path](https://nextjs.org/docs/app/api-reference/functions/revalidateTag) for more information.
 
-    ![Vercel payload](./img/vercel-payload.png)
+    ![Vercel payload](./public/vercel-payload.png)
 
 -   **Edit post:** Now, try editing the title of one of your blog posts in Contentful and click Publish. You should see the changes reflected in the website you just deployed, all without triggering a build! Behind the scenes a call was made to the revalidate api route that triggers a revalidation of the specific post that was changed.
 
