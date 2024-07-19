@@ -25,21 +25,19 @@ export const Blog = ({ blog }: { blog: BlogDetail }) => {
     return (
         <>
             <Iframe entryId={blog.sys.id} />
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-                <h1
-                    className="text-4xl font-bold tracking-tighter sm:text-5xl"
-                    {...inspectorProps({ fieldId: "title" })}
-                >
-                    {updatedBlog.title}
-                </h1>
-                <p
-                    className="text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400"
-                    {...inspectorProps({ fieldId: "summary" })}
-                >
-                    {updatedBlog.summary}
-                </p>
-            </div>
-            <div className="space-y-4 md:space-y-6">
+            <h1
+                className="text-4xl font-bold tracking-tighter sm:text-5xl"
+                {...inspectorProps({ fieldId: "title" })}
+            >
+                {updatedBlog.title}
+            </h1>
+            <p
+                className="mt-2 text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400"
+                {...inspectorProps({ fieldId: "summary" })}
+            >
+                {updatedBlog.summary}
+            </p>
+            <div className="mt-6 space-y-4 md:space-y-6">
                 <Image
                     alt="Blog Image"
                     className="aspect-video w-full overflow-hidden rounded-xl object-cover"
