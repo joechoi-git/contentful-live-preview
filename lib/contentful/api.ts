@@ -1,3 +1,40 @@
+export type Blog = {
+    sys: {
+        id: string;
+        publishedAt: string;
+        publishedVersion: number;
+    };
+    slug: string;
+    title: string;
+    summary: string;
+    author: string;
+    heroImage?: {
+        sys?: {
+            id: string;
+        };
+        url: string;
+    };
+    categoryName: string;
+    date: Date;
+    details: {
+        json: any;
+    };
+};
+
+// omit details
+export type RelatedBlog = Omit<Blog, "details"> & {
+    details?: {
+        json: any;
+    };
+};
+
+export type BlogDetail = Blog & {
+    relatedBlogsCollection?: {
+        items: RelatedBlog[];
+    };
+};
+
+// Set a variable that contains all the fields needed for blogs when a fetch for content is performed
 /*
 // GraphQL playground
 query {
@@ -38,43 +75,6 @@ query {
   }
 }
 */
-export type Blog = {
-    sys: {
-        id: string;
-        publishedAt: string;
-        publishedVersion: number;
-    };
-    slug: string;
-    title: string;
-    summary: string;
-    author: string;
-    heroImage?: {
-        sys?: {
-            id: string;
-        };
-        url: string;
-    };
-    categoryName: string;
-    date: Date;
-    details: {
-        json: any;
-    };
-};
-
-// omit details
-export type RelatedBlog = Omit<Blog, "details"> & {
-    details?: {
-        json: any;
-    };
-};
-
-export type BlogDetail = Blog & {
-    relatedBlogsCollection?: {
-        items: RelatedBlog[];
-    };
-};
-
-// Set a variable that contains all the fields needed for blogs when a fetch for content is performed
 const BLOG_GRAPHQL_FIELDS = `
     sys {
         id
@@ -148,7 +148,7 @@ function extractBlogEntries(fetchResponse: { data: { blogPostCollection: { items
     return fetchResponse?.data?.blogPostCollection?.items;
 }
 
-export async function getAllBlogs(limit = 3, isDraftMode = false) {
+export async function getAllBlogs(limit = 20, isDraftMode = false) {
     const blogs = await fetchGraphQL(
         `query {
       blogPostCollection(where:{slug_exists: true}, order: date_DESC, limit: ${limit}, preview: ${
