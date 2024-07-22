@@ -12,7 +12,7 @@
         "test": "jest --verbose --coverage",
         "test:update": "jest --updateSnapshot",
         "prepare": "husky",
-        "generate:types": "contentful-typescript-codegen --output src/lib/contentful/generatedTypes.d.ts"
+        "types:update": "contentful-typescript-codegen --output src/lib/contentful/generatedTypes.d.ts"
     },
     "dependencies": {
         "@contentful/live-preview": "^3",
