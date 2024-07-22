@@ -146,6 +146,5 @@ export async function getBlog(slug: string, isDraftMode = false) {
         isDraftMode,
         [slug]
     );
-    // console.log("getBlog", JSON.stringify(blog, null, 4));
     return extractBlogEntries(blog)[0];
 }
