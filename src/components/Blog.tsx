@@ -12,13 +12,13 @@ import {
     useContentfulInspectorMode,
     useContentfulLiveUpdates
 } from "@contentful/live-preview/react";
-import type { BlogDetail, RelatedBlog } from "../lib/contentful/api";
+import type { BlogDetailProps } from "../lib/contentful/api"; // RelatedBlog
 import { renderOption, isoToFriendlyDate, isoToFriendlyDateTime } from "../lib/contentful/options";
 import { ContentfulLivePreview } from "@contentful/live-preview";
 import Iframe from "./Iframe";
 import Card from "./Card";
 
-export const Blog = ({ blog }: { blog: BlogDetail }) => {
+export const Blog = ({ blog }: { blog: BlogDetailProps }) => {
     const updatedBlog = useContentfulLiveUpdates(blog);
     const inspectorProps = useContentfulInspectorMode({ entryId: blog.sys.id });
 
@@ -90,7 +90,9 @@ export const Blog = ({ blog }: { blog: BlogDetail }) => {
                             </h2>
                             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                                 {updatedBlog?.relatedBlogsCollection?.items?.map(
-                                    (blog: RelatedBlog) => <Card key={blog?.sys?.id} blog={blog} />
+                                    (blog: BlogDetailProps) => (
+                                        <Card key={blog?.sys?.id} blog={blog} />
+                                    )
                                 )}
                             </div>
                         </div>

@@ -1,22 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Card Component matches snapshot 1`] = `
+exports[`Card Component renders correctly with given blog props 1`] = `
 <DocumentFragment>
   <article
     class="h-full flex flex-col rounded-lg shadow-lg overflow-hidden"
   >
-    <img
-      alt="placeholder"
-      src="/test-image.jpg"
-    />
+    <a
+      href="/blogs/test-blog"
+    >
+      <img
+        alt="placeholder"
+        src="https://example.com/image.jpg"
+      />
+    </a>
     <div
       class="flex-1 p-6 bg-slate-50"
     >
-      <h3
-        class="text-2xl font-bold leading-tight text-zinc-900 dark:text-zinc-50 py-4"
+      <a
+        href="/blogs/test-blog"
       >
-        Test Title
-      </h3>
+        <h3
+          class="text-2xl font-bold leading-tight text-zinc-900 dark:text-zinc-50 py-4"
+        >
+          Test Blog Title
+        </h3>
+      </a>
       <div
         class="inline-block rounded-full bg-zinc-100 px-3 py-1 text-sm font-semibold text-zinc-800"
       >
@@ -25,29 +33,101 @@ exports[`Card Component matches snapshot 1`] = `
       <p
         class="max-w-none text-zinc-500 mt-4 mb-2 text-sm dark:text-zinc-400"
       >
-        Test Summary
+        Test Blog Summary
       </p>
       <p
         class="max-w-none text-zinc-600 mt-2 mb-2 text-sm font-bold dark:text-zinc-400"
       >
-        Authored By: Test Author
+        Authored By: John Doe
       </p>
       <p
         class="max-w-none text-zinc-600 mt-2 mb-2 text-sm font-bold dark:text-zinc-400"
       >
-        Authored On: 2022-01-01
+        Authored On: December 31, 2022
       </p>
       <p
         class="max-w-none text-red-600 mt-2 mb-2 text-sm font-bold dark:text-red-400"
       >
-        Published On: 2022-01-01T00:00:00Z
+        Published On: December 31, 2022 at 07:00:00 PM EST
       </p>
       <div
         class="flex justify-end"
       >
-        Read More →
+        <a
+          class="inline-flex h-10 items-center justify-center text-sm font-medium"
+          href="/blogs/test-blog"
+        >
+          Read More →
+        </a>
       </div>
     </div>
   </article>
 </DocumentFragment>
 `;
+
+exports[`Card Component renders default image if heroImage.url is not provided 1`] = `
+<DocumentFragment>
+  <article
+    class="h-full flex flex-col rounded-lg shadow-lg overflow-hidden"
+  >
+    <a
+      href="/blogs/test-blog"
+    >
+      <img
+        alt="placeholder"
+        src="/default.jpeg"
+      />
+    </a>
+    <div
+      class="flex-1 p-6 bg-slate-50"
+    >
+      <a
+        href="/blogs/test-blog"
+      >
+        <h3
+          class="text-2xl font-bold leading-tight text-zinc-900 dark:text-zinc-50 py-4"
+        >
+          Test Blog Title
+        </h3>
+      </a>
+      <div
+        class="inline-block rounded-full bg-zinc-100 px-3 py-1 text-sm font-semibold text-zinc-800"
+      >
+        Test Category
+      </div>
+      <p
+        class="max-w-none text-zinc-500 mt-4 mb-2 text-sm dark:text-zinc-400"
+      >
+        Test Blog Summary
+      </p>
+      <p
+        class="max-w-none text-zinc-600 mt-2 mb-2 text-sm font-bold dark:text-zinc-400"
+      >
+        Authored By: John Doe
+      </p>
+      <p
+        class="max-w-none text-zinc-600 mt-2 mb-2 text-sm font-bold dark:text-zinc-400"
+      >
+        Authored On: December 31, 2022
+      </p>
+      <p
+        class="max-w-none text-red-600 mt-2 mb-2 text-sm font-bold dark:text-red-400"
+      >
+        Published On: December 31, 2022 at 07:00:00 PM EST
+      </p>
+      <div
+        class="flex justify-end"
+      >
+        <a
+          class="inline-flex h-10 items-center justify-center text-sm font-medium"
+          href="/blogs/test-blog"
+        >
+          Read More →
+        </a>
+      </div>
+    </div>
+  </article>
+</DocumentFragment>
+`;
+
+exports[`Card Component renders null if blog slug is not provided 1`] = `<DocumentFragment />`;
