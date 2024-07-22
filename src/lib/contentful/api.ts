@@ -1,130 +1,4 @@
 /* eslint-disable indent */
-import type { IBlogPost, IBlogPostFields } from "./generatedTypes";
-
-/*
-type Blog = {
-    sys: {
-        id: string;
-        publishedAt: string;
-        publishedVersion: number;
-    };
-    slug: string;
-    title: string;
-    summary: string;
-    author: string;
-    heroImage?: {
-        sys?: {
-            id: string;
-        };
-        url: string;
-    };
-    categoryName: string;
-    // date: Date;
-    date: string;
-    details: {
-        json: any;
-    };
-};
-
-// omit details
-export type RelatedBlog = Omit<Blog, "details"> & {
-    details?: {
-        json: any;
-    };
-};
-
-export type BlogDetail = Blog & {
-    relatedBlogsCollection?: {
-        items: RelatedBlog[];
-    };
-};
-*/
-
-type Asset = {
-    sys?: {
-        id: string;
-    };
-    url: string;
-};
-
-type Document = {
-    json: any;
-};
-
-export interface BlogDetailProps extends Omit<IBlogPostFields, "details" | "heroImage">, IBlogPost {
-    sys: IBlogPost["sys"] & {
-        publishedAt: string;
-        publishedVersion: number;
-    };
-    details: Document;
-    heroImage: Asset;
-    relatedBlogsCollection?: {
-        items: BlogDetailProps[];
-    };
-}
-
-// Define BlogDetailProps with extended heroImage field
-export interface BlogDetailProps2 extends IBlogPostFields, IBlogPost {
-    sys: IBlogPost["sys"] & {
-        publishedAt: string;
-        publishedVersion: number;
-    };
-    /*
-    slug: IBlogPostFields["slug"];
-    title: IBlogPostFields["title"];
-    summary: IBlogPostFields["summary"];
-    author: IBlogPostFields["author"];
-    categoryName: IBlogPostFields["categoryName"];
-    date: IBlogPostFields["date"];
-    */
-    details: IBlogPostFields["details"] & Document;
-    heroImage: IBlogPostFields["heroImage"] & Asset;
-    relatedBlogsCollection?: {
-        items: BlogDetailProps[];
-    };
-}
-
-// Set a variable that contains all the fields needed for blogs when a fetch for content is performed
-/*
-// GraphQL playground
-query {
-  blogPostCollection(where: { slug: "supporting-neurodevelopment-of-pediatric-heart-patients-4-new-initiatives" }) {
-    items {
-      sys {
-        id
-      }
-      title
-      summary
-      heroImage {
-        url
-      }
-      slug
-      details {
-        json
-      }
-      date
-      author
-      categoryName
-      relatedBlogsCollection {
-        items {
-          sys {
-            id
-          }
-          title
-          summary
-          heroImage {
-            url
-          }
-          slug
-          date
-          author
-          categoryName
-        }
-      }
-    }
-  }
-}
-*/
 const BLOG_GRAPHQL_FIELDS = `
     sys {
         id
@@ -171,6 +45,48 @@ const BLOG_GRAPHQL_FIELDS = `
         }
     }
 `;
+
+// Set a variable that contains all the fields needed for blogs when a fetch for content is performed
+/*
+// GraphQL playground
+query {
+  blogPostCollection(where: { slug: "supporting-neurodevelopment-of-pediatric-heart-patients-4-new-initiatives" }) {
+    items {
+      sys {
+        id
+      }
+      title
+      summary
+      heroImage {
+        url
+      }
+      slug
+      details {
+        json
+      }
+      date
+      author
+      categoryName
+      relatedBlogsCollection {
+        items {
+          sys {
+            id
+          }
+          title
+          summary
+          heroImage {
+            url
+          }
+          slug
+          date
+          author
+          categoryName
+        }
+      }
+    }
+  }
+}
+*/
 
 async function fetchGraphQL(query: string, preview = false, tags: [string] = [""]) {
     return fetch(

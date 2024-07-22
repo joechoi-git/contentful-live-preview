@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import Nav from "../components/Nav"; // Adjust the import path as necessary
+import Nav from "../components/Nav";
 
 jest.mock("next/navigation", () => ({
     useParams: jest.fn()

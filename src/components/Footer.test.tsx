@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import Footer from "../components/Footer"; // Adjust the import path as necessary
+import Footer from "../components/Footer";
 
 jest.mock("next/link", () => {
     return ({

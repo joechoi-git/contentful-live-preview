@@ -1,4 +1,5 @@
-import { BlogDetailProps, getAllBlogs } from "../lib/contentful/api";
+import { getAllBlogs } from "../lib/contentful/api";
+import type { BlogDetailProps } from "../lib/contentful/adjustedTypes";
 import { draftMode } from "next/headers";
 import Iframe from "../components/Iframe";
 import Card from "../components/Card";

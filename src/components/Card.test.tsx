@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import Card from "./Card";
-import type { BlogDetailProps } from "../lib/contentful/api";
+import type { BlogDetailProps } from "../lib/contentful/adjustedTypes";
 
 // Mock the next/image component with explicit prop types
 jest.mock("next/image", () => ({

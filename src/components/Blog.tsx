@@ -12,7 +12,7 @@ import {
     useContentfulInspectorMode,
     useContentfulLiveUpdates
 } from "@contentful/live-preview/react";
-import type { BlogDetailProps } from "../lib/contentful/api"; // RelatedBlog
+import type { BlogDetailProps } from "../lib/contentful/adjustedTypes";
 import { renderOption, isoToFriendlyDate, isoToFriendlyDateTime } from "../lib/contentful/options";
 import { ContentfulLivePreview } from "@contentful/live-preview";
 import Iframe from "./Iframe";
