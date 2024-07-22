@@ -22,7 +22,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={inter.className}>
-                <main className="w-full mx-auto container max-w-[1200px] content-center">
+                <main className="w-full mx-auto container max-w-[1200px] content-center p-4">
                     <Draft />
                     <Nav />
                     {children}
