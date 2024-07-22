@@ -59,6 +59,10 @@ Runs the Jest unit testing.
 
 Updates the snapshots.
 
+### `npm run types:update`
+
+Updates the types from Contentful.
+
 ## Environment variables
 
 To run this project, you will need to add the following environment variables to your `.env.local` file:

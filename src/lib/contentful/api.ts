@@ -1,82 +1,4 @@
 /* eslint-disable indent */
-export type Blog = {
-    sys: {
-        id: string;
-        publishedAt: string;
-        publishedVersion: number;
-    };
-    slug: string;
-    title: string;
-    summary: string;
-    author: string;
-    heroImage?: {
-        sys?: {
-            id: string;
-        };
-        url: string;
-    };
-    categoryName: string;
-    // date: Date;
-    date: string;
-    details: {
-        json: any;
-    };
-};
-
-// omit details
-export type RelatedBlog = Omit<Blog, "details"> & {
-    details?: {
-        json: any;
-    };
-};
-
-export type BlogDetail = Blog & {
-    relatedBlogsCollection?: {
-        items: RelatedBlog[];
-    };
-};
-
-// Set a variable that contains all the fields needed for blogs when a fetch for content is performed
-/*
-// GraphQL playground
-query {
-  blogPostCollection(where: { slug: "supporting-neurodevelopment-of-pediatric-heart-patients-4-new-initiatives" }) {
-    items {
-      sys {
-        id
-      }
-      title
-      summary
-      heroImage {
-        url
-      }
-      slug
-      details {
-        json
-      }
-      date
-      author
-      categoryName
-      relatedBlogsCollection {
-        items {
-          sys {
-            id
-          }
-          title
-          summary
-          heroImage {
-            url
-          }
-          slug
-          date
-          author
-          categoryName
-        }
-      }
-    }
-  }
-}
-*/
 const BLOG_GRAPHQL_FIELDS = `
     sys {
         id
@@ -123,6 +45,48 @@ const BLOG_GRAPHQL_FIELDS = `
         }
     }
 `;
+
+// Set a variable that contains all the fields needed for blogs when a fetch for content is performed
+/*
+// GraphQL playground
+query {
+  blogPostCollection(where: { slug: "supporting-neurodevelopment-of-pediatric-heart-patients-4-new-initiatives" }) {
+    items {
+      sys {
+        id
+      }
+      title
+      summary
+      heroImage {
+        url
+      }
+      slug
+      details {
+        json
+      }
+      date
+      author
+      categoryName
+      relatedBlogsCollection {
+        items {
+          sys {
+            id
+          }
+          title
+          summary
+          heroImage {
+            url
+          }
+          slug
+          date
+          author
+          categoryName
+        }
+      }
+    }
+  }
+}
+*/
 
 async function fetchGraphQL(query: string, preview = false, tags: [string] = [""]) {
     return fetch(
@@ -182,6 +146,5 @@ export async function getBlog(slug: string, isDraftMode = false) {
         isDraftMode,
         [slug]
     );
-    // console.log("getBlog", JSON.stringify(blog, null, 4));
     return extractBlogEntries(blog)[0];
 }

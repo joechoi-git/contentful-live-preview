@@ -1,4 +1,5 @@
-import { BlogDetail, getAllBlogs } from "../lib/contentful/api";
+import { getAllBlogs } from "../lib/contentful/api";
+import type { BlogDetailProps } from "../lib/contentful/adjustedTypes";
 import { draftMode } from "next/headers";
 import Iframe from "../components/Iframe";
 import Card from "../components/Card";
@@ -7,7 +8,7 @@ export const revalidate = 60;
 
 export default async function Home() {
     const { isEnabled } = draftMode();
-    const blogs: BlogDetail[] = await getAllBlogs(20, isEnabled);
+    const blogs: BlogDetailProps[] = await getAllBlogs(20, isEnabled);
 
     let draft = 0;
     let published = 0;
@@ -30,7 +31,7 @@ export default async function Home() {
                 {blogs.length} articles ({draft} drafts and {published} published) found.
             </p>
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                {blogs.map((blog: BlogDetail) => (
+                {blogs.map((blog: BlogDetailProps) => (
                     <Card key={blog.sys.id} blog={blog} />
                 ))}
             </div>

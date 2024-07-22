@@ -23,13 +23,11 @@ export async function POST(request: Request) {
     // e.g. passing blog will revalidate all blog pages
     if (path) {
         revalidatePath(path);
-        console.log(`Revalidated path: ${path} at ${Date.now()}`);
     }
 
     // revalidate a specific tag
     if (tag) {
         revalidateTag(tag);
-        console.log(`Revalidated tag: ${tag} at ${Date.now()}`);
     }
 
     return NextResponse.json({ revalidated: true, now: Date.now() });

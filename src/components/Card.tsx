@@ -1,11 +1,11 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import type { BlogDetail, RelatedBlog } from "../lib/contentful/api"; // Adjust the import path as necessary
-import { isoToFriendlyDate, isoToFriendlyDateTime } from "../lib/contentful/options"; // Adjust the import path as necessary
+import type { BlogDetailProps } from "../lib/contentful/adjustedTypes";
+import { isoToFriendlyDate, isoToFriendlyDateTime } from "../lib/contentful/options";
 
 interface CardProps {
-    blog: RelatedBlog | BlogDetail;
+    blog: BlogDetailProps;
 }
 
 const Card: React.FC<CardProps> = ({ blog }) => {
