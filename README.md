@@ -63,11 +63,12 @@ Updates the snapshots.
 
 Updates the types from Contentful.
 
-### Exporting Content Types
+### `npm run models:update`
 
-Generate the latest content types to keep track of the content modeling changes.
+Generate the latest content types to keep track of the content modeling changes. Follow the steps below to set up the initial configuration.
 
 ```bash
+npm install -g contentful
 contentful init
 contentful login
 contentful space export --skip-content --content-file=./src/lib/contentful/export.json
