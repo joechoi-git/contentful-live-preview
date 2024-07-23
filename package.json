@@ -13,7 +13,7 @@
         "test:update": "jest --updateSnapshot",
         "prepare": "husky",
         "types:update": "contentful-typescript-codegen --output src/lib/contentful/generatedTypes.d.ts",
-        "models:update": "contentful space export --skip-content --content-file=./src/lib/contentful/export.json"
+        "models:update": "contentful space export --skip-content --content-file=./src/lib/contentful/export.json --environment-id=master"
     },
     "dependencies": {
         "@contentful/live-preview": "^3",
