@@ -63,6 +63,16 @@ Updates the snapshots.
 
 Updates the types from Contentful.
 
+### Exporting Content Types
+
+Generate the latest content types to keep track of the content modeling changes.
+
+```bash
+contentful init
+contentful login
+contentful space export --skip-content --content-file=./src/lib/contentful/export.json
+```
+
 ## Environment variables
 
 To run this project, you will need to add the following environment variables to your `.env.local` file:
@@ -91,13 +101,13 @@ Next, go to **Settings > CMA tokens** and create a new token by clicking **Creat
 
 With the space ID and management access token at hand run the following command:
 
-```
+```bash
 npx cross-env NEXT_PUBLIC_CONTENTFUL_SPACE_ID=YOUR_SPACE_ID CONTENTFUL_MANAGEMENT_TOKEN=XXX npm run setup
 ```
 
 This command will create the needed content structure and set up your Contentful space ready to use. The output should look as follows:
 
-```
+```bash
 > cms-contentful@1.0.0 setup /Users/john.doe/documents/next-app-router
 > node ./contentful/setup.js $NEXT_PUBLIC_CONTENTFUL_SPACE_ID $CONTENTFUL_MANAGEMENT_TOKEN
 
