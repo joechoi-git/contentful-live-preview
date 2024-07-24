@@ -13,7 +13,12 @@ import {
     useContentfulLiveUpdates
 } from "@contentful/live-preview/react";
 import type { BlogDetailProps } from "../lib/contentful/adjustedTypes";
-import { renderOption, isoToFriendlyDate, isoToFriendlyDateTime } from "../lib/contentful/options";
+import {
+    renderOption,
+    isoToFriendlyDate,
+    isoToFriendlyDateTime,
+    transformBynderAsset
+} from "../lib/contentful/Utils";
 import { ContentfulLivePreview } from "@contentful/live-preview";
 import Iframe from "./Iframe";
 import Card from "./Card";
@@ -74,6 +79,28 @@ export const Blog = ({ blog }: { blog: BlogDetailProps }) => {
                             : "In Draft"}
                     </p>
                 </div>
+                {blog?.carousel && blog?.carousel?.length > 0 && (
+                    <div {...inspectorProps({ fieldId: "carousel" })}>
+                        <div className="flex flex-wrap gap-4">
+                            {blog?.carousel?.map((slide, index) => {
+                                return (
+                                    <Image
+                                        key={`${index}-${slide.id}`}
+                                        alt={
+                                            slide.description && slide.description.length > 0
+                                                ? slide.description
+                                                : slide.name
+                                        }
+                                        height="500"
+                                        width="500"
+                                        unoptimized={true}
+                                        src={transformBynderAsset(slide)}
+                                    />
+                                );
+                            })}
+                        </div>
+                    </div>
+                )}
                 <div className="dark:text-zinc-400" {...inspectorProps({ fieldId: "details" })}>
                     {updatedBlog?.details?.json
                         ? documentToReactComponents(updatedBlog.details.json, renderOption)
@@ -81,7 +108,7 @@ export const Blog = ({ blog }: { blog: BlogDetailProps }) => {
                 </div>
                 {updatedBlog?.relatedBlogsCollection &&
                     updatedBlog?.relatedBlogsCollection?.items?.length > 0 && (
-                        <div>
+                        <>
                             <h2
                                 className="text-2xl font-bold tracking-tighter sm:text-5xl mb-8"
                                 {...inspectorProps({ fieldId: "relatedBlogs" })}
@@ -95,7 +122,7 @@ export const Blog = ({ blog }: { blog: BlogDetailProps }) => {
                                     )
                                 )}
                             </div>
-                        </div>
+                        </>
                     )}
             </div>
         </>

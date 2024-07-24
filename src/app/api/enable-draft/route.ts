@@ -1,6 +1,6 @@
 import { cookies, draftMode } from "next/headers";
 import { redirect } from "next/navigation";
-import { getBlog } from "../../../lib/contentful/api";
+import { getBlog } from "../../../lib/contentful/GraphQL";
 
 export async function GET(request: Request) {
     // Parse query string parameters

@@ -16,9 +16,6 @@ export interface IBlogPostFields {
     /** Hero Image */
     heroImage: Asset;
 
-    /** Details */
-    details: Document;
-
     /** Date */
     date: string;
 
@@ -27,6 +24,12 @@ export interface IBlogPostFields {
 
     /** Category */
     categoryName: string;
+
+    /** Carousel */
+    carousel?: Record<string, any> | undefined;
+
+    /** Details */
+    details: Document;
 
     /** Related Blogs */
     relatedBlogs?: IBlogPost[] | undefined;

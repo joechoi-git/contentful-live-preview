@@ -12,7 +12,7 @@
         "test": "jest --verbose --coverage",
         "test:update": "jest --updateSnapshot",
         "prepare": "husky",
-        "types:update": "contentful-typescript-codegen --output src/lib/contentful/generatedTypes.d.ts",
+        "types:update": "contentful-typescript-codegen --output src/lib/contentful/generatedTypes.d.ts && npm run format",
         "models:update": "contentful space export --skip-content --content-file=./src/lib/contentful/export.json --environment-id=master"
     },
     "dependencies": {
