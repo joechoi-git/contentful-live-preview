@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import type { BlogDetailProps } from "../lib/contentful/adjustedTypes";
-import { isoToFriendlyDate, isoToFriendlyDateTime } from "../lib/contentful/options";
+import { isoToFriendlyDate, isoToFriendlyDateTime } from "../lib/contentful/Utils";
 
 interface CardProps {
     blog: BlogDetailProps;

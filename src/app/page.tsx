@@ -1,4 +1,4 @@
-import { getAllBlogs } from "../lib/contentful/api";
+import { getAllBlogs } from "../lib/contentful/Api";
 import type { BlogDetailProps } from "../lib/contentful/adjustedTypes";
 import { draftMode } from "next/headers";
 import Iframe from "../components/Iframe";

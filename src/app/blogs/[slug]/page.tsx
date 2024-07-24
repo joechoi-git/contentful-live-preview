@@ -1,6 +1,6 @@
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
-import { getAllBlogs, getBlog } from "../../../lib/contentful/api";
+import { getAllBlogs, getBlog } from "../../../lib/contentful/Api";
 import type { BlogDetailProps } from "../../../lib/contentful/adjustedTypes";
 import { Blog } from "../../../components/Blog";
 import { ContentfulPreviewProvider } from "../../../components/ContentfulPreviewProvider";

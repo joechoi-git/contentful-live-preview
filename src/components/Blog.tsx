@@ -13,7 +13,12 @@ import {
     useContentfulLiveUpdates
 } from "@contentful/live-preview/react";
 import type { BlogDetailProps } from "../lib/contentful/adjustedTypes";
-import { renderOption, isoToFriendlyDate, isoToFriendlyDateTime } from "../lib/contentful/options";
+import {
+    renderOption,
+    isoToFriendlyDate,
+    isoToFriendlyDateTime,
+    transformBynderAsset
+} from "../lib/contentful/Utils";
 import { ContentfulLivePreview } from "@contentful/live-preview";
 import Iframe from "./Iframe";
 import Card from "./Card";
@@ -74,9 +79,24 @@ export const Blog = ({ blog }: { blog: BlogDetailProps }) => {
                             : "In Draft"}
                     </p>
                 </div>
-                <div {...inspectorProps({ fieldId: "carousel" })}>
-                    {JSON.stringify(blog?.carousel, null, 4)}
-                </div>
+                {blog?.carousel && blog?.carousel?.length > 0 && (
+                    <div {...inspectorProps({ fieldId: "carousel" })}>
+                        <div className="flex flex-wrap gap-4">
+                            {blog?.carousel?.map((slide, index) => {
+                                console.log("slide", slide);
+                                return (
+                                    <Image
+                                        key={`${index}-${slide.id}`}
+                                        alt={slide.name + " " + slide.description}
+                                        height="500"
+                                        width="500"
+                                        src={transformBynderAsset(slide)}
+                                    />
+                                );
+                            })}
+                        </div>
+                    </div>
+                )}
                 <div className="dark:text-zinc-400" {...inspectorProps({ fieldId: "details" })}>
                     {updatedBlog?.details?.json
                         ? documentToReactComponents(updatedBlog.details.json, renderOption)

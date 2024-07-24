@@ -1,4 +1,5 @@
 import { BLOCKS } from "@contentful/rich-text-types";
+import { BynderAsset } from "./adjustedTypes";
 
 export const renderOption = {
     renderNode: {
@@ -54,4 +55,9 @@ export const isoToFriendlyDateTime = (isoDateString: string): string => {
     };
 
     return date.toLocaleDateString("en-US", options);
+};
+
+export const transformBynderAsset = (slide: BynderAsset): string => {
+    console.log("transformBynderAsset", slide);
+    return slide.thumbnails.transformBaseUrl;
 };

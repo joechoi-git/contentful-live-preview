@@ -16,7 +16,7 @@ type Document = {
     json: any;
 };
 
-type BynderAsset = {
+export type BynderAsset = {
     archive: number;
     brandId: string;
     copyright: string | null;
