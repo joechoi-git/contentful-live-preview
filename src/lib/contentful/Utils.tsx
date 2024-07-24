@@ -30,7 +30,8 @@ export const isoToFriendlyDate = (isoDateString: string): string => {
     const options: Intl.DateTimeFormatOptions = {
         year: "numeric",
         month: "long",
-        day: "numeric"
+        day: "numeric",
+        timeZone: "UTC"
     };
 
     return date.toLocaleDateString("en-US", options);
@@ -47,14 +48,23 @@ export const isoToFriendlyDateTime = (isoDateString: string): string => {
         year: "numeric",
         month: "long",
         day: "numeric",
+        timeZone: "UTC"
+    };
+
+    const datePart = date.toLocaleDateString("en-US", options);
+
+    const timeOptions: Intl.DateTimeFormatOptions = {
         hour: "2-digit",
         minute: "2-digit",
         second: "2-digit",
-        hour12: true, // This will format the time in 12-hour format with AM/PM
-        timeZoneName: "short"
+        hour12: true,
+        timeZone: "UTC"
     };
 
-    return date.toLocaleDateString("en-US", options);
+    const timePart = date.toLocaleTimeString("en-US", timeOptions);
+    const timeZonePart = "UTC";
+
+    return `${datePart}, ${timePart} ${timeZonePart}`;
 };
 
 export const convertStringToFriendlyUri = (input: string): string => {
@@ -67,19 +77,17 @@ export const convertStringToFriendlyUri = (input: string): string => {
 
 // https://support.bynder.com/hc/en-us/articles/18953104053266-Create-a-DAT-Derivative-Using-URL-Parameters#:~:text=Temperature,image%20as%20possible%20remains%20visible.
 export const transformBynderAsset = (slide: BynderAsset, options?: string): string => {
-    // TO DO: use the custom Bynder loader
-    // https://nextjs.org/docs/app/api-reference/next-config-js/images#example-loader-configuration
     const DEFAULT_CONFIG = "format=webp&quality=10";
     const name =
         slide.tags && slide.tags.length > 0
             ? convertStringToFriendlyUri(slide.tags.join("-"))
             : convertStringToFriendlyUri(slide.name);
     let url = slide.thumbnails.transformBaseUrl;
-    url = url.substring(0, url.lastIndexOf("/")); // trim the last bit of the URL
-    url = `${url}/${name}?${DEFAULT_CONFIG}`; // ${options ? options : ""}`;
+    // Trim only the path, not the whole URL
+    url = url.endsWith("/") ? url.slice(0, -1) : url;
+    url = `${url}/${name}?${DEFAULT_CONFIG}`;
     if (options && options.length > 0) {
         url = `${url}&${options}`;
     }
-    console.log("transformBynderAsset", url);
     return url;
 };
