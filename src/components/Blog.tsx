@@ -83,15 +83,35 @@ export const Blog = ({ blog }: { blog: BlogDetailProps }) => {
                     <div {...inspectorProps({ fieldId: "carousel" })}>
                         <div className="flex flex-wrap gap-4">
                             {blog?.carousel?.map((slide, index) => {
-                                console.log("slide", slide);
                                 return (
+                                    // eslint-disable-next-line @next/next/no-img-element
+                                    <img
+                                        key={`${index}-${slide.id}`}
+                                        alt={
+                                            slide.description && slide.description.length > 0
+                                                ? slide.description
+                                                : slide.name
+                                        }
+                                        height="300"
+                                        width="300"
+                                        src={transformBynderAsset(
+                                            slide,
+                                            "io=transform:fill,width:300,height:300"
+                                        )}
+                                    />
+                                    /*
                                     <Image
                                         key={`${index}-${slide.id}`}
-                                        alt={slide.name + " " + slide.description}
+                                        alt={
+                                            slide.description && slide.description.length > 0
+                                                ? slide.description
+                                                : slide.name
+                                        }
                                         height="500"
                                         width="500"
                                         src={transformBynderAsset(slide)}
                                     />
+                                    */
                                 );
                             })}
                         </div>

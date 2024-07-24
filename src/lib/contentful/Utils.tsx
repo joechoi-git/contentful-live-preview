@@ -57,7 +57,27 @@ export const isoToFriendlyDateTime = (isoDateString: string): string => {
     return date.toLocaleDateString("en-US", options);
 };
 
-export const transformBynderAsset = (slide: BynderAsset): string => {
-    console.log("transformBynderAsset", slide);
-    return slide.thumbnails.transformBaseUrl;
+export const convertStringToFriendlyUri = (input: string): string => {
+    let result = input.toLowerCase();
+    result = result.replace(/[^a-z0-9-]/g, "-");
+    result = result.replace(/-+/g, "-");
+    result = result.replace(/^-+|-+$/g, "");
+    return result;
+};
+
+// https://support.bynder.com/hc/en-us/articles/18953104053266-Create-a-DAT-Derivative-Using-URL-Parameters#:~:text=Temperature,image%20as%20possible%20remains%20visible.
+export const transformBynderAsset = (slide: BynderAsset, options?: string): string => {
+    const DEFAULT_CONFIG = "format=webp&quality=70";
+    const name =
+        slide.tags && slide.tags.length > 0
+            ? convertStringToFriendlyUri(slide.tags.join("-"))
+            : convertStringToFriendlyUri(slide.name);
+    let url = slide.thumbnails.transformBaseUrl;
+    url = url.substring(0, url.lastIndexOf("/")); // trim the last bit of the URL
+    url = `${url}/${name}?${DEFAULT_CONFIG}`; // ${options ? options : ""}`;
+    if (options && options.length > 0) {
+        url = `${url}&${options}`;
+    }
+    console.log("transformBynderAsset", url);
+    return url;
 };
