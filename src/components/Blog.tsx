@@ -74,6 +74,9 @@ export const Blog = ({ blog }: { blog: BlogDetailProps }) => {
                             : "In Draft"}
                     </p>
                 </div>
+                <div {...inspectorProps({ fieldId: "carousel" })}>
+                    {JSON.stringify(blog?.carousel, null, 4)}
+                </div>
                 <div className="dark:text-zinc-400" {...inspectorProps({ fieldId: "details" })}>
                     {updatedBlog?.details?.json
                         ? documentToReactComponents(updatedBlog.details.json, renderOption)
@@ -81,7 +84,7 @@ export const Blog = ({ blog }: { blog: BlogDetailProps }) => {
                 </div>
                 {updatedBlog?.relatedBlogsCollection &&
                     updatedBlog?.relatedBlogsCollection?.items?.length > 0 && (
-                        <div>
+                        <>
                             <h2
                                 className="text-2xl font-bold tracking-tighter sm:text-5xl mb-8"
                                 {...inspectorProps({ fieldId: "relatedBlogs" })}
@@ -95,7 +98,7 @@ export const Blog = ({ blog }: { blog: BlogDetailProps }) => {
                                     )
                                 )}
                             </div>
-                        </div>
+                        </>
                     )}
             </div>
         </>

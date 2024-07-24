@@ -9,18 +9,19 @@ const BLOG_GRAPHQL_FIELDS = `
     title
     slug
     summary
-    details {
-        json
-    }
-    date
-    author
-    categoryName
     heroImage {
         sys {
             id
         }
         __typename
         url
+    }
+    date
+    author
+    categoryName
+    carousel
+    details {
+        json
     }
     relatedBlogsCollection {
         items {
@@ -61,12 +62,13 @@ query {
         url
       }
       slug
-      details {
-        json
-      }
       date
       author
       categoryName
+      carousel
+      details {
+        json
+      }
       relatedBlogsCollection {
         items {
           sys {

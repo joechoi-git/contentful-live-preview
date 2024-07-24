@@ -56,7 +56,7 @@ export interface BlogDetailProps
     sys: IBlogPost["sys"] & Sys; // extend with &
     details: Document; // override with omit
     heroImage: Asset; // override with omit
-    carousel: BynderAsset; // override with omit
+    carousel: BynderAsset[]; // override with omit
     relatedBlogsCollection?: {
         items: BlogDetailProps[]; // add
     };
