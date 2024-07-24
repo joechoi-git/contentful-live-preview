@@ -67,7 +67,9 @@ export const convertStringToFriendlyUri = (input: string): string => {
 
 // https://support.bynder.com/hc/en-us/articles/18953104053266-Create-a-DAT-Derivative-Using-URL-Parameters#:~:text=Temperature,image%20as%20possible%20remains%20visible.
 export const transformBynderAsset = (slide: BynderAsset, options?: string): string => {
-    const DEFAULT_CONFIG = "format=webp&quality=70";
+    // TO DO: use the custom Bynder loader
+    // https://nextjs.org/docs/app/api-reference/next-config-js/images#example-loader-configuration
+    const DEFAULT_CONFIG = "format=webp&quality=10";
     const name =
         slide.tags && slide.tags.length > 0
             ? convertStringToFriendlyUri(slide.tags.join("-"))
