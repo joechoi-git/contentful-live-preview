@@ -117,8 +117,8 @@ export const Blog = ({ blog }: { blog: BlogDetailProps }) => {
                             </h2>
                             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                                 {updatedBlog?.relatedBlogsCollection?.items?.map(
-                                    (blog: BlogDetailProps) => (
-                                        <Card key={blog?.sys?.id} blog={blog} />
+                                    (blog: BlogDetailProps, index) => (
+                                        <Card key={`${index}-${blog?.sys?.id}`} blog={blog} />
                                     )
                                 )}
                             </div>
