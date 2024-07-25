@@ -90,6 +90,6 @@ export const transformBynderAsset = (slide: BynderAsset, options?: string): stri
     if (options && options.length > 0) {
         url = `${url}&${options}`;
     }
-    // console.log("transformBynderAsset", url);
+    console.log("transformBynderAsset", url);
     return url;
 };

@@ -1,8 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import "@testing-library/jest-dom";
 import Carousel from "./Carousel";
-import type { BynderAsset } from "../lib/contentful/adjustedTypes";
+import { BynderAsset } from "../lib/contentful/adjustedTypes";
 
 const mockSlides: BynderAsset[] = [
     {
@@ -75,19 +74,19 @@ const mockSlides: BynderAsset[] = [
 
 describe("Carousel", () => {
     it("renders without crashing", () => {
-        render(<Carousel slides={mockSlides} />);
+        render(<Carousel slides={mockSlides} width={1200} height={400} />);
         expect(screen.getByAltText("Slide 1 description")).toBeInTheDocument();
         expect(screen.getByAltText("Slide 2 description")).toBeInTheDocument();
     });
 
     it("displays the correct number of slides", () => {
-        render(<Carousel slides={mockSlides} />);
+        render(<Carousel slides={mockSlides} width={1200} height={400} />);
         const slides = screen.getAllByRole("img");
         expect(slides).toHaveLength(2);
     });
 
     it("displays navigation buttons", () => {
-        render(<Carousel slides={mockSlides} />);
+        render(<Carousel slides={mockSlides} width={1200} height={400} />);
         const buttons = screen.getAllByRole("link");
         expect(buttons).toHaveLength(2);
         expect(buttons[0]).toHaveAttribute("href", "#carousel-0");
@@ -95,7 +94,7 @@ describe("Carousel", () => {
     });
 
     it("matches snapshot", () => {
-        const { asFragment } = render(<Carousel slides={mockSlides} />);
+        const { asFragment } = render(<Carousel slides={mockSlides} width={1200} height={400} />);
         expect(asFragment()).toMatchSnapshot();
     });
 });
