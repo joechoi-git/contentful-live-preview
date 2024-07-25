@@ -11,12 +11,12 @@ exports[`Carousel matches snapshot 1`] = `
     >
       <img
         alt="Slide 1 description"
-        class="rounded-xl"
+        class="rounded-xl cccccc"
         data-nimg="1"
         decoding="async"
         height="400"
         loading="lazy"
-        src="https://example.com/slide-1?format=webp&date=2024-07-25-17-02&quality=80&io=transform:extend,width:1200,height:400,background:cccccc"
+        src="https://example.com/slide-1?format=webp&date=2024-07-25-17-14&quality=80&io=transform:fill,width:1200,height:400,gravity:center"
         style="color: transparent;"
         width="1200"
       />
@@ -27,12 +27,12 @@ exports[`Carousel matches snapshot 1`] = `
     >
       <img
         alt="Slide 2 description"
-        class="rounded-xl"
+        class="rounded-xl cccccc"
         data-nimg="1"
         decoding="async"
         height="400"
         loading="lazy"
-        src="https://example.com/slide-2?format=webp&date=2024-07-25-17-02&quality=80&io=transform:extend,width:1200,height:400,background:cccccc"
+        src="https://example.com/slide-2?format=webp&date=2024-07-25-17-14&quality=80&io=transform:fill,width:1200,height:400,gravity:center"
         style="color: transparent;"
         width="1200"
       />

@@ -33,9 +33,10 @@ const Carousel: React.FC<CarouselProps> = ({ slides, width, height, quality, bac
                                 unoptimized={true}
                                 src={transformBynderAsset(
                                     slide,
-                                    `quality=${quality}&io=transform:extend,width:${width},height:${height},background:${background ? background : "cccccc"}`
+                                    `quality=${quality}&io=transform:fill,width:${width},height:${height},gravity:center` // fill works well for large image assets
+                                    // `quality=${quality}&io=transform:extend,width:${width},height:${height},background:${background ? background : "cccccc"}` // extend works well for small image assets
                                 )}
-                                className="rounded-xl"
+                                className={`rounded-xl ${background ? background : ""}`}
                             />
                         </div>
                     );
