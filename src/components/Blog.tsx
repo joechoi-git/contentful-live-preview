@@ -81,21 +81,42 @@ export const Blog = ({ blog }: { blog: BlogDetailProps }) => {
                 </div>
                 {blog?.carousel && blog?.carousel?.length > 0 && (
                     <div {...inspectorProps({ fieldId: "carousel" })}>
-                        <div className="flex flex-wrap gap-4">
+                        <div className="carousel w-full p-4">
                             {blog?.carousel?.map((slide, index) => {
                                 return (
-                                    <Image
+                                    <div
+                                        id={`${index}-${slide.id}`}
                                         key={`${index}-${slide.id}`}
-                                        alt={
-                                            slide.description && slide.description.length > 0
-                                                ? slide.description
-                                                : slide.name
-                                        }
-                                        height="500"
-                                        width="500"
-                                        unoptimized={true}
-                                        src={transformBynderAsset(slide)}
-                                    />
+                                        className="carousel-item w-full"
+                                    >
+                                        <Image
+                                            alt={
+                                                slide.description && slide.description.length > 0
+                                                    ? slide.description
+                                                    : slide.name
+                                            }
+                                            height="400"
+                                            width="1200"
+                                            unoptimized={true}
+                                            src={transformBynderAsset(
+                                                slide,
+                                                "io=transform:fit,width:1200,height:400"
+                                            )}
+                                        />
+                                    </div>
+                                );
+                            })}
+                        </div>
+                        <div className="flex justify-center w-full py-2 gap-2">
+                            {blog?.carousel?.map((slide, index) => {
+                                return (
+                                    <a
+                                        href={`#${index}-${slide.id}`}
+                                        key={`${index}-${slide.id}`}
+                                        className="btn btn-xs"
+                                    >
+                                        {index++}
+                                    </a>
                                 );
                             })}
                         </div>
@@ -117,8 +138,8 @@ export const Blog = ({ blog }: { blog: BlogDetailProps }) => {
                             </h2>
                             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                                 {updatedBlog?.relatedBlogsCollection?.items?.map(
-                                    (blog: BlogDetailProps) => (
-                                        <Card key={blog?.sys?.id} blog={blog} />
+                                    (blog: BlogDetailProps, index) => (
+                                        <Card key={`${index}-${blog?.sys?.id}`} blog={blog} />
                                     )
                                 )}
                             </div>

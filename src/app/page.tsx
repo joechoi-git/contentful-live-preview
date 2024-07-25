@@ -4,7 +4,7 @@ import { draftMode } from "next/headers";
 import Iframe from "../components/Iframe";
 import Card from "../components/Card";
 
-export const revalidate = 60;
+export const revalidate = 0;
 
 export default async function Home() {
     const { isEnabled } = draftMode();
