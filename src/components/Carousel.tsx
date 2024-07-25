@@ -5,9 +5,13 @@ import { transformBynderAsset } from "@/lib/contentful/Utils";
 
 interface CarouselProps {
     slides: BynderAsset[];
+    width: number;
+    height: number;
+    quality: number;
+    background?: string; // hex-code
 }
 
-const Carousel: React.FC<CarouselProps> = ({ slides }) => {
+const Carousel: React.FC<CarouselProps> = ({ slides, width, height, quality, background }) => {
     return slides && slides.length > 0 ? (
         <>
             <div className="carousel w-full p-4">
@@ -16,7 +20,7 @@ const Carousel: React.FC<CarouselProps> = ({ slides }) => {
                         <div
                             id={`carousel-${index}`}
                             key={`${index}-${slide.id}`}
-                            className="carousel-item w-full"
+                            className="carousel-item w-full mr-2"
                         >
                             <Image
                                 alt={
@@ -24,13 +28,14 @@ const Carousel: React.FC<CarouselProps> = ({ slides }) => {
                                         ? slide.description
                                         : slide.name
                                 }
-                                height="400"
-                                width="1200"
+                                height={height}
+                                width={width}
                                 unoptimized={true}
                                 src={transformBynderAsset(
                                     slide,
-                                    "io=transform:crop,width:1200,height:400"
+                                    `quality=${quality}&io=transform:extend,width:${width},height:${height},background:${background ? background : "cccccc"}`
                                 )}
+                                className="rounded-xl"
                             />
                         </div>
                     );

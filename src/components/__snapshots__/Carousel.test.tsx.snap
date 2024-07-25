@@ -6,31 +6,33 @@ exports[`Carousel matches snapshot 1`] = `
     class="carousel w-full p-4"
   >
     <div
-      class="carousel-item w-full"
+      class="carousel-item w-full mr-2"
       id="carousel-0"
     >
       <img
         alt="Slide 1 description"
+        class="rounded-xl"
         data-nimg="1"
         decoding="async"
         height="400"
         loading="lazy"
-        src="https://example.com/slide-1?format=webp&quality=10&io=transform:crop,width:1200,height:400"
+        src="https://example.com/slide-1?format=webp&quality=80&io=transform:extend,width:1200,height:400,background:cccccc"
         style="color: transparent;"
         width="1200"
       />
     </div>
     <div
-      class="carousel-item w-full"
+      class="carousel-item w-full mr-2"
       id="carousel-1"
     >
       <img
         alt="Slide 2 description"
+        class="rounded-xl"
         data-nimg="1"
         decoding="async"
         height="400"
         loading="lazy"
-        src="https://example.com/slide-2?format=webp&quality=10&io=transform:crop,width:1200,height:400"
+        src="https://example.com/slide-2?format=webp&quality=80&io=transform:extend,width:1200,height:400,background:cccccc"
         style="color: transparent;"
         width="1200"
       />

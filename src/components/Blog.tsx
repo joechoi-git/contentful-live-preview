@@ -27,7 +27,7 @@ export const Blog = ({ blog }: { blog: BlogDetailProps }) => {
         <>
             <Iframe entryId={blog.sys.id} />
             <h1
-                className="text-4xl font-bold tracking-tighter sm:text-5xl"
+                className="text-4xl font-bold tracking-tighter sm:text-5xl text-accent"
                 {...inspectorProps({ fieldId: "title" })}
             >
                 {updatedBlog.title}
@@ -62,7 +62,7 @@ export const Blog = ({ blog }: { blog: BlogDetailProps }) => {
                         Authored On:{" "}
                         {updatedBlog.date ? isoToFriendlyDate(updatedBlog.date.toString()) : ""}
                     </p>
-                    <p>
+                    <p className="text-secondary">
                         Published On:{" "}
                         {blog.sys.publishedAt
                             ? isoToFriendlyDateTime(blog.sys.publishedAt.toString())
@@ -71,7 +71,7 @@ export const Blog = ({ blog }: { blog: BlogDetailProps }) => {
                 </div>
                 {blog?.carousel && blog?.carousel?.length > 0 && (
                     <div {...inspectorProps({ fieldId: "carousel" })}>
-                        <Carousel slides={blog?.carousel} />
+                        <Carousel slides={blog?.carousel} width={1200} height={400} quality={50} />
                     </div>
                 )}
                 <div {...inspectorProps({ fieldId: "details" })}>
