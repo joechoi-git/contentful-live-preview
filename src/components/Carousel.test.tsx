@@ -74,19 +74,43 @@ const mockSlides: BynderAsset[] = [
 
 describe("Carousel", () => {
     it("renders without crashing", () => {
-        render(<Carousel slides={mockSlides} width={1200} height={400} />);
+        render(
+            <Carousel
+                slides={mockSlides}
+                width={1200}
+                height={400}
+                quality={80}
+                background="cccccc"
+            />
+        );
         expect(screen.getByAltText("Slide 1 description")).toBeInTheDocument();
         expect(screen.getByAltText("Slide 2 description")).toBeInTheDocument();
     });
 
     it("displays the correct number of slides", () => {
-        render(<Carousel slides={mockSlides} width={1200} height={400} />);
+        render(
+            <Carousel
+                slides={mockSlides}
+                width={1200}
+                height={400}
+                quality={80}
+                background="cccccc"
+            />
+        );
         const slides = screen.getAllByRole("img");
         expect(slides).toHaveLength(2);
     });
 
     it("displays navigation buttons", () => {
-        render(<Carousel slides={mockSlides} width={1200} height={400} />);
+        render(
+            <Carousel
+                slides={mockSlides}
+                width={1200}
+                height={400}
+                quality={80}
+                background="cccccc"
+            />
+        );
         const buttons = screen.getAllByRole("link");
         expect(buttons).toHaveLength(2);
         expect(buttons[0]).toHaveAttribute("href", "#carousel-0");
@@ -94,7 +118,15 @@ describe("Carousel", () => {
     });
 
     it("matches snapshot", () => {
-        const { asFragment } = render(<Carousel slides={mockSlides} width={1200} height={400} />);
+        const { asFragment } = render(
+            <Carousel
+                slides={mockSlides}
+                width={1200}
+                height={400}
+                quality={80}
+                background="cccccc"
+            />
+        );
         expect(asFragment()).toMatchSnapshot();
     });
 });

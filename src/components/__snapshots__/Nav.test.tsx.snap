@@ -6,7 +6,7 @@ exports[`Nav Component renders correctly when params.slug is not present 1`] = `
     class="flex items-center justify-between border-b-2 border-secondary pb-4 mb-6"
   >
     <ul
-      class="flex gap-4"
+      class="flex gap-4  text-accent"
     >
       <li
         class="border-b-4 border-primary font-bold"
@@ -197,7 +197,7 @@ exports[`Nav Component renders correctly when params.slug is present 1`] = `
     class="flex items-center justify-between border-b-2 border-secondary pb-4 mb-6"
   >
     <ul
-      class="flex gap-4"
+      class="flex gap-4  text-accent"
     >
       <li>
         <a

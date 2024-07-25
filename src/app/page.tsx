@@ -23,7 +23,7 @@ export default async function Home() {
     return (
         <>
             <Iframe />
-            <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl">Research Library</h1>
+            <h1 className="text-3xl font-bold tracking-tighter text-accent">Research Library</h1>
             <p className="mt-2 text-xl/relaxed">
                 Explore the latest innovations, clinical trials and research articles
             </p>
