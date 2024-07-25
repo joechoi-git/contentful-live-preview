@@ -37,7 +37,7 @@ export const Blog = ({ blog }: { blog: BlogDetailProps }) => {
                 {updatedBlog.title}
             </h1>
             <p
-                className="mt-2 text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400"
+                className="mt-2 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
                 {...inspectorProps({ fieldId: "summary" })}
             >
                 {updatedBlog.summary}
@@ -59,20 +59,14 @@ export const Blog = ({ blog }: { blog: BlogDetailProps }) => {
                     })}
                 />
                 <div className="md:text-lg/relaxed lg:text-sm/relaxed xl:text-lg/relaxed">
-                    <p
-                        className="text-zinc-500 dark:text-zinc-400"
-                        {...inspectorProps({ fieldId: "author" })}
-                    >
+                    <p {...inspectorProps({ fieldId: "author" })}>
                         Authored By: {updatedBlog.author}
                     </p>
-                    <p
-                        className="text-zinc-500 dark:text-zinc-400"
-                        {...inspectorProps({ fieldId: "date" })}
-                    >
+                    <p {...inspectorProps({ fieldId: "date" })}>
                         Authored On:{" "}
                         {updatedBlog.date ? isoToFriendlyDate(updatedBlog.date.toString()) : ""}
                     </p>
-                    <p className="text-red-600 dark:text-red-400">
+                    <p>
                         Published On:{" "}
                         {blog.sys.publishedAt
                             ? isoToFriendlyDateTime(blog.sys.publishedAt.toString())
@@ -122,7 +116,7 @@ export const Blog = ({ blog }: { blog: BlogDetailProps }) => {
                         </div>
                     </div>
                 )}
-                <div className="dark:text-zinc-400" {...inspectorProps({ fieldId: "details" })}>
+                <div {...inspectorProps({ fieldId: "details" })}>
                     {updatedBlog?.details?.json
                         ? documentToReactComponents(updatedBlog.details.json, renderOption)
                         : null}

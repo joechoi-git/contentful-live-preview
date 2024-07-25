@@ -20,25 +20,19 @@ const Card: React.FC<CardProps> = ({ blog }) => {
                     width="350"
                 />
             </Link>
-            <div className={`flex-1 p-6 ${blog.sys.publishedAt ? "bg-slate-50" : "bg-slate-300"}`}>
+            <div className={`flex-1 p-6 ${blog.sys.publishedAt ? "bg-base-100" : "bg-base-300"}`}>
                 <Link href={`/blogs/${blog.slug}`}>
-                    <h3 className="text-2xl font-bold leading-tight text-zinc-900 dark:text-zinc-50 py-4">
-                        {blog.title}
-                    </h3>
+                    <h3 className="text-2xl font-bold leading-tight py-4">{blog.title}</h3>
                 </Link>
-                <div className="inline-block rounded-full bg-zinc-100 px-3 py-1 text-sm font-semibold text-zinc-800">
+                <div className="inline-block rounded-full px-3 py-1 text-sm font-semibold">
                     {blog.categoryName}
                 </div>
-                <p className="max-w-none text-zinc-500 mt-4 mb-2 text-sm dark:text-zinc-400">
-                    {blog.summary}
-                </p>
-                <p className="max-w-none text-zinc-600 mt-2 mb-2 text-sm font-bold dark:text-zinc-400">
-                    Authored By: {blog.author}
-                </p>
-                <p className="max-w-none text-zinc-600 mt-2 mb-2 text-sm font-bold dark:text-zinc-400">
+                <p className="max-w-none mt-4 mb-2 text-sm">{blog.summary}</p>
+                <p className="max-w-none mt-2 mb-2 text-sm font-bold">Authored By: {blog.author}</p>
+                <p className="max-w-none mt-2 mb-2 text-sm font-bold">
                     Authored On: {blog.date ? isoToFriendlyDate(blog.date.toString()) : ""}
                 </p>
-                <p className="max-w-none text-red-600 mt-2 mb-2 text-sm font-bold dark:text-red-400">
+                <p className="max-w-none mt-2 mb-2 text-sm font-bold">
                     Published On:{" "}
                     {blog.sys.publishedAt
                         ? isoToFriendlyDateTime(blog.sys.publishedAt.toString())

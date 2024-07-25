@@ -42,6 +42,6 @@ describe("Footer Component", () => {
             "https://github.com/joechoi-git/contentful-live-preview"
         );
         expect(linkElement).toHaveAttribute("target", "_blank");
-        expect(linkElement).toHaveClass("text-blue-500");
+        expect(linkElement).toHaveClass("text-primary");
     });
 });

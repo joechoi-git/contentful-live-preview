@@ -3,7 +3,7 @@
 exports[`Nav Component renders correctly when params.slug is not present 1`] = `
 <DocumentFragment>
   <nav
-    class="flex items-center justify-between border-b border-slate-300 pb-4 mb-6"
+    class="flex items-center justify-between border-b-2 border-secondary pb-4 mb-6"
   >
     <ul
       class="flex gap-4"
@@ -19,7 +19,7 @@ exports[`Nav Component renders correctly when params.slug is not present 1`] = `
       </li>
     </ul>
     <select
-      class="border-solid border-2 p-2 border-primary undefined"
+      class="rounded border-solid border-4 p-2 border-accent bg-primary text-primary-content undefined"
     >
       <option
         value="system"
@@ -194,7 +194,7 @@ exports[`Nav Component renders correctly when params.slug is not present 1`] = `
 exports[`Nav Component renders correctly when params.slug is present 1`] = `
 <DocumentFragment>
   <nav
-    class="flex items-center justify-between border-b border-slate-300 pb-4 mb-6"
+    class="flex items-center justify-between border-b-2 border-secondary pb-4 mb-6"
   >
     <ul
       class="flex gap-4"
@@ -217,7 +217,7 @@ exports[`Nav Component renders correctly when params.slug is present 1`] = `
       </li>
     </ul>
     <select
-      class="border-solid border-2 p-2 border-primary undefined"
+      class="rounded border-solid border-4 p-2 border-accent bg-primary text-primary-content undefined"
     >
       <option
         value="system"

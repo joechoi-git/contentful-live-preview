@@ -3,7 +3,7 @@
 exports[`Draft Component renders correctly when draft mode is disabled 1`] = `
 <DocumentFragment>
   <div
-    class="my-6 border border-blue-500 rounded w-full p-4 flex gap-4 bg-slate-100"
+    class="my-6 border-4 border-accent bg-primary text-primary-content rounded w-full p-4 flex gap-4"
     id="control-panel"
   >
     <p
@@ -12,7 +12,7 @@ exports[`Draft Component renders correctly when draft mode is disabled 1`] = `
       Control Panel
     </p>
     <p
-      class="text-red-500"
+      class="text-secondary-content"
     >
       Draft Mode is 
       <strong>
@@ -20,7 +20,7 @@ exports[`Draft Component renders correctly when draft mode is disabled 1`] = `
       </strong>
        
       <a
-        class="text-blue-500 underline"
+        class="text-primary-content underline"
         href="/api/enable-draft-mode"
       >
         Enable Draft Mode
@@ -33,7 +33,7 @@ exports[`Draft Component renders correctly when draft mode is disabled 1`] = `
 exports[`Draft Component renders correctly when draft mode is enabled 1`] = `
 <DocumentFragment>
   <div
-    class="my-6 border border-blue-500 rounded w-full p-4 flex gap-4 bg-slate-100"
+    class="my-6 border-4 border-accent bg-primary text-primary-content rounded w-full p-4 flex gap-4"
     id="control-panel"
   >
     <p
@@ -42,7 +42,7 @@ exports[`Draft Component renders correctly when draft mode is enabled 1`] = `
       Control Panel
     </p>
     <p
-      class="text-green-500"
+      class="text-primary-content"
     >
       Draft Mode is 
       <strong>
@@ -50,7 +50,7 @@ exports[`Draft Component renders correctly when draft mode is enabled 1`] = `
       </strong>
        
       <a
-        class="text-blue-500 underline"
+        class="text-primary-content underline"
         href="/api/disable-draft-mode"
       >
         Disable Draft Mode

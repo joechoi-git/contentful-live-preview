@@ -9,7 +9,7 @@ export default function Nav() {
     const params = useParams();
 
     return (
-        <nav className="flex items-center justify-between border-b border-slate-300 pb-4 mb-6">
+        <nav className="flex items-center justify-between border-b-2 border-secondary pb-4 mb-6">
             <ul className="flex gap-4">
                 {!params.slug ? (
                     <li className="border-b-4 border-primary font-bold">

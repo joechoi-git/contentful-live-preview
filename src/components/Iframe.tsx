@@ -34,11 +34,11 @@ const Iframe: React.FC<IframeProps> = ({ entryId }) => {
             const content = document.createElement("p");
             content.id = "iframe-content";
             if (inIframe) {
-                content.classList.add("text-green-500");
+                content.classList.add("text-primary-content");
                 content.innerHTML = "Viewing <strong>Inside</strong> Contentful.";
             } else {
-                content.classList.add("text-red-500");
-                content.innerHTML = `Viewing <strong>Outside</strong> Contentful. <a href="${previewUrl}" class="text-blue-500 underline">Open Live Preview</a>`;
+                content.classList.add("text-secondary-content");
+                content.innerHTML = `Viewing <strong>Outside</strong> Contentful. <a href="${previewUrl}" class="text-primary-content underline">Open Live Preview</a>`;
             }
             controlPanel.appendChild(content);
         }
