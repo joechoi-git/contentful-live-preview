@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import Carousel from "./Carousel";
-import { BynderAsset } from "../lib/contentful/adjustedTypes";
+import type { BynderAsset } from "../lib/contentful/adjustedTypes";
 
 const mockSlides: BynderAsset[] = [
     {

@@ -1,5 +1,5 @@
 import { BLOCKS } from "@contentful/rich-text-types";
-import { BynderAsset } from "./adjustedTypes";
+import type { BynderAsset } from "./adjustedTypes";
 
 export const renderOption = {
     renderNode: {

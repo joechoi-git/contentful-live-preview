@@ -4,7 +4,7 @@ import {
     convertStringToFriendlyUri,
     transformBynderAsset
 } from "./Utils";
-import { BynderAsset } from "./adjustedTypes";
+import type { BynderAsset } from "./adjustedTypes";
 
 // Mock for BynderAsset type
 const mockBynderAsset: BynderAsset = {
