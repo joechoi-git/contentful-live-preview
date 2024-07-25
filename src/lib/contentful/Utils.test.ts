@@ -2,7 +2,8 @@ import {
     isoToFriendlyDate,
     isoToFriendlyDateTime,
     convertStringToFriendlyUri,
-    transformBynderAsset
+    transformBynderAsset,
+    getCurrentTimestampWithoutSeconds
 } from "./Utils";
 import type { BynderAsset } from "./adjustedTypes";
 
@@ -94,15 +95,20 @@ describe("Utils functions", () => {
         it("should transform BynderAsset to expected URL", () => {
             const result = transformBynderAsset(mockBynderAsset);
             const expectedUrl = "https://bynder.com/transform-url/tag1-tag2?format=webp";
-            expect(result).toBe(expectedUrl);
+            const [urlWithoutDate, datePart] = result.split("&date=");
+            expect(urlWithoutDate).toBe(expectedUrl);
+            expect(datePart).toMatch(/\d{4}-\d{2}-\d{2}-\d{2}-\d{2}/);
         });
 
         it("should include custom options if provided", () => {
             const customOptions = "width=300&height=400";
             const result = transformBynderAsset(mockBynderAsset, customOptions);
-            const expectedUrl =
-                "https://bynder.com/transform-url/tag1-tag2?format=webp&width=300&height=400";
-            expect(result).toBe(expectedUrl);
+            const expectedUrlPart = "https://bynder.com/transform-url/tag1-tag2?format=webp";
+            const [urlWithoutDate, datePart] = result.split("&date=");
+            expect(urlWithoutDate).toContain(expectedUrlPart);
+            expect(result).toContain("width=300");
+            expect(result).toContain("height=400");
+            expect(datePart).toMatch(/\d{4}-\d{2}-\d{2}-\d{2}-\d{2}/);
         });
 
         it("should handle asset without tags correctly", () => {
@@ -112,7 +118,42 @@ describe("Utils functions", () => {
             };
             const result = transformBynderAsset(assetWithoutTags);
             const expectedUrl = "https://bynder.com/transform-url/sample-asset?format=webp";
-            expect(result).toBe(expectedUrl);
+            const [urlWithoutDate, datePart] = result.split("&date=");
+            expect(urlWithoutDate).toBe(expectedUrl);
+            expect(datePart).toMatch(/\d{4}-\d{2}-\d{2}-\d{2}-\d{2}/);
+        });
+    });
+
+    describe("getCurrentTimestampWithoutSeconds", () => {
+        // Mock Date
+        const realDate = Date;
+
+        function mockDate(isoDate: string) {
+            global.Date = class extends realDate {
+                constructor() {
+                    super();
+                    return new realDate(isoDate);
+                }
+            } as unknown as typeof Date;
+        }
+
+        beforeAll(() => {
+            mockDate("2024-07-25T13:45:00Z");
+        });
+
+        afterAll(() => {
+            global.Date = realDate;
+        });
+
+        it("should return the current timestamp without seconds in the format YYYY-MM-DD-HH-MM", () => {
+            const timestamp = getCurrentTimestampWithoutSeconds();
+            expect(timestamp).toBe("2024-07-25-13-45");
+        });
+
+        it("should correctly pad single digit month, day, hour, and minute with leading zeros", () => {
+            mockDate("2024-01-05T08:09:00Z");
+            const timestamp = getCurrentTimestampWithoutSeconds();
+            expect(timestamp).toBe("2024-01-05-08-09");
         });
     });
 });

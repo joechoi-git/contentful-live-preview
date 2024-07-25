@@ -67,6 +67,16 @@ export const isoToFriendlyDateTime = (isoDateString: string): string => {
     return `${datePart}, ${timePart} ${timeZonePart}`;
 };
 
+export const getCurrentTimestampWithoutSeconds = (): string => {
+    const date = new Date();
+    const year = date.getUTCFullYear();
+    const month = String(date.getUTCMonth() + 1).padStart(2, "0");
+    const day = String(date.getUTCDate()).padStart(2, "0");
+    const hours = String(date.getUTCHours()).padStart(2, "0");
+    const minutes = String(date.getUTCMinutes()).padStart(2, "0");
+    return `${year}-${month}-${day}-${hours}-${minutes}`;
+};
+
 export const convertStringToFriendlyUri = (input: string): string => {
     let result = input.toLowerCase();
     result = result.replace(/[^a-z0-9-]/g, "-");
@@ -79,7 +89,7 @@ export const convertStringToFriendlyUri = (input: string): string => {
 export const transformBynderAsset = (slide: BynderAsset, options?: string): string => {
     // TO DO: use the custom Bynder loader
     // https://nextjs.org/docs/app/api-reference/next-config-js/images#example-loader-configuration
-    const DEFAULT_CONFIG = "format=webp";
+    const DEFAULT_CONFIG = `format=webp&date=${getCurrentTimestampWithoutSeconds()}`; // uniqute date without the seconds is added to bypass the cache on the Next.js side
     const name =
         slide.tags && slide.tags.length > 0
             ? convertStringToFriendlyUri(slide.tags.join("-"))
