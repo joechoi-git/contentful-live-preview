@@ -26,7 +26,7 @@ export default function Wrapper({ children }: Props): React.JSX.Element {
             style={{ display: "none" }}
             className={"min-h-screen overflow-x-hidden " + inter.className}
         >
-            <main className="w-full mx-auto container max-w-[1200px] content-center p-4">
+            <main className="w-full mx-auto container max-w-[1200px] content-center p-6">
                 <Nav />
                 {children}
                 <Footer />

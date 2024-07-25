@@ -13,15 +13,11 @@ import {
     useContentfulLiveUpdates
 } from "@contentful/live-preview/react";
 import type { BlogDetailProps } from "../lib/contentful/adjustedTypes";
-import {
-    renderOption,
-    isoToFriendlyDate,
-    isoToFriendlyDateTime,
-    transformBynderAsset
-} from "../lib/contentful/Utils";
+import { renderOption, isoToFriendlyDate, isoToFriendlyDateTime } from "../lib/contentful/Utils";
 import { ContentfulLivePreview } from "@contentful/live-preview";
 import Iframe from "./Iframe";
 import Card from "./Card";
+import Carousel from "./Carousel";
 
 export const Blog = ({ blog }: { blog: BlogDetailProps }) => {
     const updatedBlog = useContentfulLiveUpdates(blog);
@@ -37,7 +33,7 @@ export const Blog = ({ blog }: { blog: BlogDetailProps }) => {
                 {updatedBlog.title}
             </h1>
             <p
-                className="mt-2 text-zinc-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-zinc-400"
+                className="mt-2 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
                 {...inspectorProps({ fieldId: "summary" })}
             >
                 {updatedBlog.summary}
@@ -59,20 +55,14 @@ export const Blog = ({ blog }: { blog: BlogDetailProps }) => {
                     })}
                 />
                 <div className="md:text-lg/relaxed lg:text-sm/relaxed xl:text-lg/relaxed">
-                    <p
-                        className="text-zinc-500 dark:text-zinc-400"
-                        {...inspectorProps({ fieldId: "author" })}
-                    >
+                    <p {...inspectorProps({ fieldId: "author" })}>
                         Authored By: {updatedBlog.author}
                     </p>
-                    <p
-                        className="text-zinc-500 dark:text-zinc-400"
-                        {...inspectorProps({ fieldId: "date" })}
-                    >
+                    <p {...inspectorProps({ fieldId: "date" })}>
                         Authored On:{" "}
                         {updatedBlog.date ? isoToFriendlyDate(updatedBlog.date.toString()) : ""}
                     </p>
-                    <p className="text-red-600 dark:text-red-400">
+                    <p>
                         Published On:{" "}
                         {blog.sys.publishedAt
                             ? isoToFriendlyDateTime(blog.sys.publishedAt.toString())
@@ -81,48 +71,10 @@ export const Blog = ({ blog }: { blog: BlogDetailProps }) => {
                 </div>
                 {blog?.carousel && blog?.carousel?.length > 0 && (
                     <div {...inspectorProps({ fieldId: "carousel" })}>
-                        <div className="carousel w-full p-4">
-                            {blog?.carousel?.map((slide, index) => {
-                                return (
-                                    <div
-                                        id={`${index}-${slide.id}`}
-                                        key={`${index}-${slide.id}`}
-                                        className="carousel-item w-full"
-                                    >
-                                        <Image
-                                            alt={
-                                                slide.description && slide.description.length > 0
-                                                    ? slide.description
-                                                    : slide.name
-                                            }
-                                            height="400"
-                                            width="1200"
-                                            unoptimized={true}
-                                            src={transformBynderAsset(
-                                                slide,
-                                                "io=transform:fit,width:1200,height:400"
-                                            )}
-                                        />
-                                    </div>
-                                );
-                            })}
-                        </div>
-                        <div className="flex justify-center w-full py-2 gap-2">
-                            {blog?.carousel?.map((slide, index) => {
-                                return (
-                                    <a
-                                        href={`#${index}-${slide.id}`}
-                                        key={`${index}-${slide.id}`}
-                                        className="btn btn-xs"
-                                    >
-                                        {index++}
-                                    </a>
-                                );
-                            })}
-                        </div>
+                        <Carousel slides={blog?.carousel} />
                     </div>
                 )}
-                <div className="dark:text-zinc-400" {...inspectorProps({ fieldId: "details" })}>
+                <div {...inspectorProps({ fieldId: "details" })}>
                     {updatedBlog?.details?.json
                         ? documentToReactComponents(updatedBlog.details.json, renderOption)
                         : null}

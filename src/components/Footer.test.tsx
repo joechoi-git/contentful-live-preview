@@ -26,7 +26,7 @@ describe("Footer Component", () => {
         const { asFragment } = render(<Footer />);
         expect(
             screen.getByText(
-                "This is a sample app built to demonstrate the Contentful Live Preview feature."
+                "This is a sample app designed to demonstrate the Contentful Live Preview SDK"
             )
         ).toBeInTheDocument();
         expect(screen.getByText("Open GitHub repository.")).toBeInTheDocument();
@@ -42,6 +42,6 @@ describe("Footer Component", () => {
             "https://github.com/joechoi-git/contentful-live-preview"
         );
         expect(linkElement).toHaveAttribute("target", "_blank");
-        expect(linkElement).toHaveClass("text-blue-500");
+        expect(linkElement).toHaveClass("text-primary");
     });
 });

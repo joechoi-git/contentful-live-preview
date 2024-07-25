@@ -6,20 +6,20 @@ export default function Draft() {
     return (
         <div
             id="control-panel"
-            className="my-6 border border-blue-500 rounded w-full p-4 flex gap-4 bg-slate-100"
+            className="my-6 border-4 border-accent bg-primary text-primary-content rounded w-full p-4 flex gap-4"
         >
             <p className="font-bold">Control Panel</p>
             {isEnabled ? (
-                <p className="text-green-500">
+                <p className="text-primary-content">
                     Draft Mode is <strong>Enabled.</strong>{" "}
-                    <a href="/api/disable-draft-mode" className="text-blue-500 underline">
+                    <a href="/api/disable-draft-mode" className="text-primary-content underline">
                         Disable Draft Mode
                     </a>
                 </p>
             ) : (
-                <p className="text-red-500">
+                <p className="text-secondary-content">
                     Draft Mode is <strong>Disabled.</strong>{" "}
-                    <a href="/api/enable-draft-mode" className="text-blue-500 underline">
+                    <a href="/api/enable-draft-mode" className="text-primary-content underline">
                         Enable Draft Mode
                     </a>
                 </p>

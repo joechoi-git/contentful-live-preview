@@ -6,7 +6,7 @@ export const renderOption = {
         [BLOCKS.HEADING_1]: (node: any, children: any) => <h1 className="font-bold">{children}</h1>,
         [BLOCKS.HEADING_2]: (node: any, children: any) => <h2 className="font-bold">{children}</h2>,
         [BLOCKS.PARAGRAPH]: (node: any, children: any) => (
-            <p className="py-4 pt-4 [&>a]:text-blue-500">{children}</p>
+            <p className="py-4 pt-4 [&>a]:text-primary">{children}</p>
         ),
         [BLOCKS.UL_LIST]: (node: any, children: any) => (
             <ul className="list-disc" style={{ marginLeft: 50 }}>
@@ -90,6 +90,6 @@ export const transformBynderAsset = (slide: BynderAsset, options?: string): stri
     if (options && options.length > 0) {
         url = `${url}&${options}`;
     }
-    console.log("transformBynderAsset", url);
+    // console.log("transformBynderAsset", url);
     return url;
 };

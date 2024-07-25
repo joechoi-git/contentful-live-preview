@@ -3,7 +3,7 @@
 exports[`ThemeSwitcher matches the snapshot 1`] = `
 <DocumentFragment>
   <select
-    class="border-solid border-2 p-2 border-primary"
+    class="rounded border-solid border-4 p-2 border-accent bg-primary text-primary-content undefined"
   >
     <option
       value="system"

@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Carousel matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="carousel w-full p-4"
+  >
+    <div
+      class="carousel-item w-full"
+      id="carousel-0"
+    >
+      <img
+        alt="Slide 1 description"
+        data-nimg="1"
+        decoding="async"
+        height="400"
+        loading="lazy"
+        src="https://example.com/slide-1?format=webp&quality=10&io=transform:crop,width:1200,height:400"
+        style="color: transparent;"
+        width="1200"
+      />
+    </div>
+    <div
+      class="carousel-item w-full"
+      id="carousel-1"
+    >
+      <img
+        alt="Slide 2 description"
+        data-nimg="1"
+        decoding="async"
+        height="400"
+        loading="lazy"
+        src="https://example.com/slide-2?format=webp&quality=10&io=transform:crop,width:1200,height:400"
+        style="color: transparent;"
+        width="1200"
+      />
+    </div>
+  </div>
+  <div
+    class="flex justify-center w-full py-2 gap-2"
+  >
+    <a
+      class="btn bg-secondary hover:bg-accent text-secondary-content"
+      href="#carousel-0"
+    >
+      0
+    </a>
+    <a
+      class="btn bg-secondary hover:bg-accent text-secondary-content"
+      href="#carousel-1"
+    >
+      1
+    </a>
+  </div>
+</DocumentFragment>
+`;

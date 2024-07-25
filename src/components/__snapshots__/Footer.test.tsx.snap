@@ -3,14 +3,14 @@
 exports[`Footer Component renders correctly 1`] = `
 <DocumentFragment>
   <footer
-    class="mt-6 w-full text-center border-t border-slate-300 py-6"
+    class="mt-6 w-full text-center border-t-2 border-secondary py-6"
   >
     <p>
-      This is a sample app built to demonstrate the Contentful Live Preview feature.
+      This is a sample app designed to demonstrate the Contentful Live Preview SDK
     </p>
     <p>
       <a
-        class="text-blue-500"
+        class="text-primary"
         href="https://github.com/joechoi-git/contentful-live-preview"
         target="_blank"
       >
