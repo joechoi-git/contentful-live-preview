@@ -1,7 +1,11 @@
 import React from "react";
 import { ThemeContext, Theme } from "../context/ThemeContext";
 
-const ThemeSwitcher: React.FC = () => {
+interface ThemeSwitcherProps {
+    className?: string;
+}
+
+const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ className }) => {
     const { theme, setTheme } = React.useContext(ThemeContext);
     const savedTheme: Theme | undefined =
         typeof window !== "undefined" ? (localStorage.getItem("theme") as Theme) : undefined;
@@ -15,7 +19,7 @@ const ThemeSwitcher: React.FC = () => {
         <select
             value={savedTheme ? savedTheme : theme}
             onChange={(e) => handleSetTheme(e.target.value as Theme)}
-            className="border-solid border-2 p-2 border-primary"
+            className={`border-solid border-2 p-2 border-primary ${className}`}
         >
             <option value="system">system</option>
             <option value="light">light</option>

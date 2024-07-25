@@ -9,19 +9,18 @@ export default function Nav() {
     const params = useParams();
 
     return (
-        <nav className="w-full text-left border-b border-slate-300 pb-4 mb-6">
-            <ul className="inline-flex gap-8 list-disc justify-start">
-                <li className="font-bold list-none">Navigation</li>
+        <nav className="flex items-center justify-between border-b border-slate-300 pb-4 mb-6">
+            <ul className="flex gap-4">
                 {!params.slug ? (
-                    <li className="w-full text-left">
+                    <li className="border-b-4 border-primary font-bold">
                         <Link href="/">Home</Link>
                     </li>
                 ) : (
                     <>
-                        <li className="w-full text-left">
+                        <li>
                             <Link href="/">Home</Link>
                         </li>
-                        <li className="w-full text-left">
+                        <li className="border-b-4 border-primary font-bold">
                             <Link href={params.slug.toString()}>Article</Link>
                         </li>
                     </>

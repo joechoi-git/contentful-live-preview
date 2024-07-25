@@ -24,7 +24,6 @@ describe("Nav Component", () => {
         useParamsMock.mockReturnValue({ slug: undefined });
 
         const { asFragment } = render(<Nav />);
-        expect(screen.getByText("Navigation")).toBeInTheDocument();
         expect(screen.getByText("Home")).toHaveAttribute("href", "/");
         expect(screen.queryByText("Article")).not.toBeInTheDocument();
         expect(asFragment()).toMatchSnapshot();
@@ -34,7 +33,6 @@ describe("Nav Component", () => {
         useParamsMock.mockReturnValue({ slug: "test-article" });
 
         const { asFragment } = render(<Nav />);
-        expect(screen.getByText("Navigation")).toBeInTheDocument();
         expect(screen.getByText("Home")).toHaveAttribute("href", "/");
         expect(screen.getByText("Article")).toHaveAttribute("href", "test-article");
         expect(asFragment()).toMatchSnapshot();
