@@ -5,7 +5,7 @@ import type { BlogDetailProps } from "../../../lib/contentful/adjustedTypes";
 import { Blog } from "../../../components/Blog";
 import { ContentfulPreviewProvider } from "../../../components/ContentfulPreviewProvider";
 
-export const revalidate = 60;
+export const revalidate = 0;
 
 // At build time, fetch all slugs to build the blog pages so they are static and cached
 export async function generateStaticParams() {
