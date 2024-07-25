@@ -31,6 +31,7 @@ const mockBlog: BlogDetailProps = {
     title: "Test Blog Title",
     summary: "Test Blog Summary",
     author: "John Doe",
+    carousel: [],
     heroImage: {
         url: "https://example.com/image.jpg"
     },
