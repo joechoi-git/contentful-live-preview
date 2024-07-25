@@ -3,6 +3,12 @@ import { render, screen } from "@testing-library/react";
 import Carousel from "./Carousel";
 import type { BynderAsset } from "../lib/contentful/adjustedTypes";
 
+// Mock the Utils module
+jest.mock("../lib/contentful/Utils", () => ({
+    ...jest.requireActual("../lib/contentful/Utils"),
+    getCurrentTimestampWithoutSeconds: jest.fn(() => "2024-07-25-13-45")
+}));
+
 const mockSlides: BynderAsset[] = [
     {
         archive: 0,
