@@ -16,7 +16,7 @@ exports[`Carousel matches snapshot 1`] = `
         decoding="async"
         height="400"
         loading="lazy"
-        src="https://example.com/slide-1?format=webp&date=2024-07-25-17-24&quality=80&io=transform:fill,width:1200,height:400,gravity:center"
+        src="https://example.com/slide-1?format=webp&date=2024-07-25-17-26&quality=80&io=transform:fill,width:1200,height:400,gravity:center"
         style="color: transparent;"
         width="1200"
       />
@@ -32,7 +32,7 @@ exports[`Carousel matches snapshot 1`] = `
         decoding="async"
         height="400"
         loading="lazy"
-        src="https://example.com/slide-2?format=webp&date=2024-07-25-17-24&quality=80&io=transform:fill,width:1200,height:400,gravity:center"
+        src="https://example.com/slide-2?format=webp&date=2024-07-25-17-26&quality=80&io=transform:fill,width:1200,height:400,gravity:center"
         style="color: transparent;"
         width="1200"
       />
