@@ -26,7 +26,7 @@ describe("Footer Component", () => {
         const { asFragment } = render(<Footer />);
         expect(
             screen.getByText(
-                "This is a sample app built to demonstrate the Contentful Live Preview feature."
+                "This is a sample app designed to demonstrate the Contentful Live Preview SDK"
             )
         ).toBeInTheDocument();
         expect(screen.getByText("Open GitHub repository.")).toBeInTheDocument();

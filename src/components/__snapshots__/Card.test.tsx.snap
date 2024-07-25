@@ -3,7 +3,7 @@
 exports[`Card Component renders correctly with given blog props 1`] = `
 <DocumentFragment>
   <article
-    class="h-full flex flex-col rounded-lg shadow-lg overflow-hidden"
+    class="h-full flex flex-col border-2 border-secondary rounded-xl shadow-xl overflow-hidden"
   >
     <a
       href="/blogs/test-blog"
@@ -26,27 +26,27 @@ exports[`Card Component renders correctly with given blog props 1`] = `
         </h3>
       </a>
       <div
-        class="inline-block rounded-full px-3 py-1 text-sm font-semibold"
+        class="font-bold"
       >
         Test Category
       </div>
       <p
-        class="max-w-none mt-4 mb-2 text-sm"
+        class="mt-4 mb-2"
       >
         Test Blog Summary
       </p>
       <p
-        class="max-w-none mt-2 mb-2 text-sm font-bold"
+        class="mt-2 mb-2 font-bold"
       >
         Authored By: John Doe
       </p>
       <p
-        class="max-w-none mt-2 mb-2 text-sm font-bold"
+        class="mt-2 mb-2 font-bold"
       >
         Authored On: January 1, 2023
       </p>
       <p
-        class="max-w-none mt-2 mb-2 text-sm font-bold"
+        class="mt-2 mb-2 font-bold text-secondary"
       >
         Published On: January 1, 2023, 12:00:00 AM UTC
       </p>
@@ -54,7 +54,7 @@ exports[`Card Component renders correctly with given blog props 1`] = `
         class="flex justify-end"
       >
         <a
-          class="inline-flex h-10 items-center justify-center text-sm font-medium"
+          class="inline-flex h-10 items-center justify-center font-medium text-primary"
           href="/blogs/test-blog"
         >
           Read More →
@@ -68,7 +68,7 @@ exports[`Card Component renders correctly with given blog props 1`] = `
 exports[`Card Component renders default image if heroImage.url is not provided 1`] = `
 <DocumentFragment>
   <article
-    class="h-full flex flex-col rounded-lg shadow-lg overflow-hidden"
+    class="h-full flex flex-col border-2 border-secondary rounded-xl shadow-xl overflow-hidden"
   >
     <a
       href="/blogs/test-blog"
@@ -91,27 +91,27 @@ exports[`Card Component renders default image if heroImage.url is not provided 1
         </h3>
       </a>
       <div
-        class="inline-block rounded-full px-3 py-1 text-sm font-semibold"
+        class="font-bold"
       >
         Test Category
       </div>
       <p
-        class="max-w-none mt-4 mb-2 text-sm"
+        class="mt-4 mb-2"
       >
         Test Blog Summary
       </p>
       <p
-        class="max-w-none mt-2 mb-2 text-sm font-bold"
+        class="mt-2 mb-2 font-bold"
       >
         Authored By: John Doe
       </p>
       <p
-        class="max-w-none mt-2 mb-2 text-sm font-bold"
+        class="mt-2 mb-2 font-bold"
       >
         Authored On: January 1, 2023
       </p>
       <p
-        class="max-w-none mt-2 mb-2 text-sm font-bold"
+        class="mt-2 mb-2 font-bold text-secondary"
       >
         Published On: January 1, 2023, 12:00:00 AM UTC
       </p>
@@ -119,7 +119,7 @@ exports[`Card Component renders default image if heroImage.url is not provided 1
         class="flex justify-end"
       >
         <a
-          class="inline-flex h-10 items-center justify-center text-sm font-medium"
+          class="inline-flex h-10 items-center justify-center font-medium text-primary"
           href="/blogs/test-blog"
         >
           Read More →

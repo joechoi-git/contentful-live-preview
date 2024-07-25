@@ -24,13 +24,13 @@ export default async function Home() {
         <>
             <Iframe />
             <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl">Research Library</h1>
-            <p className="md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+            <p className="mt-2 text-xl/relaxed">
                 Explore the latest innovations, clinical trials and research articles
             </p>
-            <p className="my-6 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxe">
+            <p className="mt-2 text-xl/relaxed">
                 {blogs.length} articles ({draft} drafts and {published} published) found.
             </p>
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-6 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                 {blogs.map((blog: BlogDetailProps) => (
                     <Card key={blog.sys.id} blog={blog} />
                 ))}

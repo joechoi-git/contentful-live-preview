@@ -6,7 +6,7 @@ exports[`Footer Component renders correctly 1`] = `
     class="mt-6 w-full text-center border-t-2 border-secondary py-6"
   >
     <p>
-      This is a sample app built to demonstrate the Contentful Live Preview feature.
+      This is a sample app designed to demonstrate the Contentful Live Preview SDK
     </p>
     <p>
       <a
