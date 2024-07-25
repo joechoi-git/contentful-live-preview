@@ -14,7 +14,7 @@ const Card: React.FC<CardProps> = ({ blog }) => {
             <Link href={`/blogs/${blog.slug}`}>
                 <Image
                     alt="placeholder"
-                    className="aspect-[4/3] object-cover w-full"
+                    className={`aspect-[4/3] object-cover w-full ${blog.sys.publishedAt ? "" : "grayscale"}`}
                     height="263"
                     src={blog?.heroImage?.url ?? "/default.jpeg"}
                     width="350"
@@ -38,7 +38,7 @@ const Card: React.FC<CardProps> = ({ blog }) => {
                 </p>
                 <div className="flex justify-end">
                     <Link
-                        className="inline-flex h-10 items-center justify-center font-medium text-primary"
+                        className="inline-flex h-10 items-center justify-center font-medium text-secondary"
                         href={`/blogs/${blog.slug}`}
                     >
                         Read More →

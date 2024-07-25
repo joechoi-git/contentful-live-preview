@@ -9,7 +9,7 @@ export default function Footer() {
                 <Link
                     href="https://github.com/joechoi-git/contentful-live-preview"
                     target="_blank"
-                    className="text-primary"
+                    className="text-secondary"
                 >
                     Open GitHub repository.
                 </Link>

@@ -93,7 +93,7 @@ describe("Utils functions", () => {
     describe("transformBynderAsset", () => {
         it("should transform BynderAsset to expected URL", () => {
             const result = transformBynderAsset(mockBynderAsset);
-            const expectedUrl = "https://bynder.com/transform-url/tag1-tag2?format=webp&quality=10";
+            const expectedUrl = "https://bynder.com/transform-url/tag1-tag2?format=webp";
             expect(result).toBe(expectedUrl);
         });
 
@@ -101,7 +101,7 @@ describe("Utils functions", () => {
             const customOptions = "width=300&height=400";
             const result = transformBynderAsset(mockBynderAsset, customOptions);
             const expectedUrl =
-                "https://bynder.com/transform-url/tag1-tag2?format=webp&quality=10&width=300&height=400";
+                "https://bynder.com/transform-url/tag1-tag2?format=webp&width=300&height=400";
             expect(result).toBe(expectedUrl);
         });
 
@@ -111,8 +111,7 @@ describe("Utils functions", () => {
                 tags: []
             };
             const result = transformBynderAsset(assetWithoutTags);
-            const expectedUrl =
-                "https://bynder.com/transform-url/sample-asset?format=webp&quality=10";
+            const expectedUrl = "https://bynder.com/transform-url/sample-asset?format=webp";
             expect(result).toBe(expectedUrl);
         });
     });

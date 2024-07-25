@@ -71,7 +71,7 @@ export const Blog = ({ blog }: { blog: BlogDetailProps }) => {
                 </div>
                 {blog?.carousel && blog?.carousel?.length > 0 && (
                     <div {...inspectorProps({ fieldId: "carousel" })}>
-                        <Carousel slides={blog?.carousel} width={1200} height={400} />
+                        <Carousel slides={blog?.carousel} width={1200} height={400} quality={10} />
                     </div>
                 )}
                 <div {...inspectorProps({ fieldId: "details" })}>

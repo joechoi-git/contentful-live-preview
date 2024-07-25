@@ -54,7 +54,7 @@ exports[`Card Component renders correctly with given blog props 1`] = `
         class="flex justify-end"
       >
         <a
-          class="inline-flex h-10 items-center justify-center font-medium text-primary"
+          class="inline-flex h-10 items-center justify-center font-medium text-secondary"
           href="/blogs/test-blog"
         >
           Read More →
@@ -119,7 +119,7 @@ exports[`Card Component renders default image if heroImage.url is not provided 1
         class="flex justify-end"
       >
         <a
-          class="inline-flex h-10 items-center justify-center font-medium text-primary"
+          class="inline-flex h-10 items-center justify-center font-medium text-secondary"
           href="/blogs/test-blog"
         >
           Read More →

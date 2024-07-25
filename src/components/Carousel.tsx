@@ -7,9 +7,11 @@ interface CarouselProps {
     slides: BynderAsset[];
     width: number;
     height: number;
+    quality: number;
+    background?: string; // hex-code
 }
 
-const Carousel: React.FC<CarouselProps> = ({ slides, width, height }) => {
+const Carousel: React.FC<CarouselProps> = ({ slides, width, height, quality, background }) => {
     return slides && slides.length > 0 ? (
         <>
             <div className="carousel w-full p-4">
@@ -31,7 +33,7 @@ const Carousel: React.FC<CarouselProps> = ({ slides, width, height }) => {
                                 unoptimized={true}
                                 src={transformBynderAsset(
                                     slide,
-                                    `io=transform:extend,width:${width},height:${height},background:ffff00`
+                                    `quality=${quality}&io=transform:extend,width:${width},height:${height},background:${background ? background : "cccccc"}`
                                 )}
                                 className="rounded-xl"
                             />

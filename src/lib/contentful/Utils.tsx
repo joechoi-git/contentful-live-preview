@@ -79,14 +79,14 @@ export const convertStringToFriendlyUri = (input: string): string => {
 export const transformBynderAsset = (slide: BynderAsset, options?: string): string => {
     // TO DO: use the custom Bynder loader
     // https://nextjs.org/docs/app/api-reference/next-config-js/images#example-loader-configuration
-    const DEFAULT_CONFIG = "format=webp&quality=10";
+    const DEFAULT_CONFIG = "format=webp";
     const name =
         slide.tags && slide.tags.length > 0
             ? convertStringToFriendlyUri(slide.tags.join("-"))
             : convertStringToFriendlyUri(slide.name);
     let url = slide.thumbnails.transformBaseUrl;
     url = url.substring(0, url.lastIndexOf("/")); // trim the last bit of the URL
-    url = `${url}/${name}?${DEFAULT_CONFIG}`; // ${options ? options : ""};
+    url = `${url}/${name}?${DEFAULT_CONFIG}`;
     if (options && options.length > 0) {
         url = `${url}&${options}`;
     }

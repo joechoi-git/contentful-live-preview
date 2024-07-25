@@ -37,7 +37,7 @@ const Iframe: React.FC<IframeProps> = ({ entryId }) => {
                 content.classList.add("text-primary-content");
                 content.innerHTML = "Viewing <strong>Inside</strong> Contentful.";
             } else {
-                content.classList.add("text-secondary-content");
+                content.classList.add("text-primary-content");
                 content.innerHTML = `Viewing <strong>Outside</strong> Contentful. <a href="${previewUrl}" class="text-primary-content underline">Open Live Preview</a>`;
             }
             controlPanel.appendChild(content);

@@ -10,7 +10,7 @@ exports[`Footer Component renders correctly 1`] = `
     </p>
     <p>
       <a
-        class="text-primary"
+        class="text-secondary"
         href="https://github.com/joechoi-git/contentful-live-preview"
         target="_blank"
       >
