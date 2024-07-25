@@ -1,14 +1,9 @@
 import React from "react";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import Nav from "../components/Nav";
-import Footer from "../components/Footer";
+import Wrapper from "../components/Wrapper";
 import Draft from "../components/Draft";
-import { ThemeProvider } from "../context/ThemeContext";
-
+import { ThemeProvider } from "@/context/ThemeContext";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
     title: "Contentful Live Preview",
@@ -22,16 +17,12 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={inter.className}>
-                <ThemeProvider>
-                    <main className="w-full mx-auto container max-w-[1200px] content-center p-4">
-                        <Draft />
-                        <Nav />
-                        {children}
-                        <Footer />
-                    </main>
-                </ThemeProvider>
-            </body>
+            <ThemeProvider>
+                <Wrapper>
+                    <Draft />
+                    {children}
+                </Wrapper>
+            </ThemeProvider>
         </html>
     );
 }

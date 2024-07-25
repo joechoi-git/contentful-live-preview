@@ -3,6 +3,7 @@
 import React from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
+import ThemeSwitcher from "../components/ThemeSwitcher";
 
 export default function Nav() {
     const params = useParams();
@@ -26,6 +27,7 @@ export default function Nav() {
                     </>
                 )}
             </ul>
+            <ThemeSwitcher />
         </nav>
     );
 }
