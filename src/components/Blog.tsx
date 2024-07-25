@@ -13,15 +13,11 @@ import {
     useContentfulLiveUpdates
 } from "@contentful/live-preview/react";
 import type { BlogDetailProps } from "../lib/contentful/adjustedTypes";
-import {
-    renderOption,
-    isoToFriendlyDate,
-    isoToFriendlyDateTime,
-    transformBynderAsset
-} from "../lib/contentful/Utils";
+import { renderOption, isoToFriendlyDate, isoToFriendlyDateTime } from "../lib/contentful/Utils";
 import { ContentfulLivePreview } from "@contentful/live-preview";
 import Iframe from "./Iframe";
 import Card from "./Card";
+import Carousel from "./Carousel";
 
 export const Blog = ({ blog }: { blog: BlogDetailProps }) => {
     const updatedBlog = useContentfulLiveUpdates(blog);
@@ -75,45 +71,7 @@ export const Blog = ({ blog }: { blog: BlogDetailProps }) => {
                 </div>
                 {blog?.carousel && blog?.carousel?.length > 0 && (
                     <div {...inspectorProps({ fieldId: "carousel" })}>
-                        <div className="carousel w-full p-4">
-                            {blog?.carousel?.map((slide, index) => {
-                                return (
-                                    <div
-                                        id={`${index}-${slide.id}`}
-                                        key={`${index}-${slide.id}`}
-                                        className="carousel-item w-full"
-                                    >
-                                        <Image
-                                            alt={
-                                                slide.description && slide.description.length > 0
-                                                    ? slide.description
-                                                    : slide.name
-                                            }
-                                            height="400"
-                                            width="1200"
-                                            unoptimized={true}
-                                            src={transformBynderAsset(
-                                                slide,
-                                                "io=transform:fit,width:1200,height:400"
-                                            )}
-                                        />
-                                    </div>
-                                );
-                            })}
-                        </div>
-                        <div className="flex justify-center w-full py-2 gap-2">
-                            {blog?.carousel?.map((slide, index) => {
-                                return (
-                                    <a
-                                        href={`#${index}-${slide.id}`}
-                                        key={`${index}-${slide.id}`}
-                                        className="btn btn-xs"
-                                    >
-                                        {index++}
-                                    </a>
-                                );
-                            })}
-                        </div>
+                        <Carousel slides={blog?.carousel} />
                     </div>
                 )}
                 <div {...inspectorProps({ fieldId: "details" })}>
