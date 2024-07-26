@@ -97,14 +97,12 @@ export const transformBynderAsset = ({
     options,
     isUnique
 }: transformBynderAssetProps): string => {
-    // TO DO: use the custom Bynder loader
-    // https://nextjs.org/docs/app/api-reference/next-config-js/images#example-loader-configuration
     let filename =
         slide.tags && slide.tags.length > 0
             ? convertStringToFriendlyUri(slide.name + "-" + slide.tags.join("-"))
             : convertStringToFriendlyUri(slide.name);
     if (isUnique === undefined || isUnique === true) {
-        filename = `${filename}-${getCurrentTimestampWithoutSeconds()}`; // add an unique date without the seconds to bypass the image cache
+        filename = `${filename}-${getCurrentTimestampWithoutSeconds()}`; // add an unique date to bypass the image cache
     }
     let url = slide.thumbnails.transformBaseUrl;
     url = url.substring(0, url.lastIndexOf("/")); // trim the last bit of the URL
@@ -115,7 +113,9 @@ export const transformBynderAsset = ({
     return url;
 };
 
+// https://nextjs.org/docs/app/api-reference/components/image#loader
+// width is skipped and created in transformBynderAsset
+// quality is added here, but it can be added as an options via transformBynderAsset
 export const bynderImageLoader = ({ src, quality }: ImageLoaderProps): string => {
-    // width is skipped
     return `${src}&quality=${quality}`;
 };
