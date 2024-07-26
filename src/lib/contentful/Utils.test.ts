@@ -97,9 +97,6 @@ describe("Utils functions", () => {
             const expectedUrl =
                 "https://bynder.com/transform-url/sample-asset-tag1-tag2?format=webp";
             expect(result).toBe(expectedUrl);
-            // const [urlWithoutDate, datePart] = result.split("&date=");
-            // expect(urlWithoutDate).toBe(expectedUrl);
-            // expect(datePart).toMatch(/\d{4}-\d{2}-\d{2}-\d{2}-\d{2}/);
         });
 
         it("should include custom options if provided", () => {
@@ -124,6 +121,17 @@ describe("Utils functions", () => {
             const result = transformBynderAsset({ slide: assetWithoutTags, isUnique: false });
             const expectedUrl = "https://bynder.com/transform-url/sample-asset?format=webp";
             expect(result).toBe(expectedUrl);
+        });
+
+        it("should handle unique timestamp correctly", () => {
+            const assetWithoutTags = {
+                ...mockBynderAsset,
+                tags: []
+            };
+            const result = transformBynderAsset({ slide: assetWithoutTags });
+            const expectedUrl = "https://bynder.com/transform-url/sample-asset";
+            expect(result).toContain(expectedUrl);
+            expect(result).toMatch(/-\d{8}-\d{4}/);
         });
     });
 
