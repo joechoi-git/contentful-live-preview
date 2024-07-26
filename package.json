@@ -16,7 +16,7 @@
         "models:update": "contentful space export --skip-content --content-file=./src/lib/contentful/export.json --environment-id=master"
     },
     "dependencies": {
-        "@contentful/live-preview": "^3",
+        "@contentful/live-preview": "^4",
         "@contentful/rich-text-react-renderer": "^15",
         "dotenv": "^16",
         "next": "^14",
