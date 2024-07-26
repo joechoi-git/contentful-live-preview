@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import type { BynderAsset } from "../lib/contentful/adjustedTypes";
-import { transformBynderAsset } from "../lib/contentful/Utils";
+import { transformBynderAsset, bynderImageLoader } from "../lib/contentful/Utils";
 
 interface CarouselProps {
     slides: BynderAsset[];
@@ -31,21 +31,22 @@ const Carousel: React.FC<CarouselProps> = ({
                             className="carousel-item w-full mr-2"
                         >
                             <Image
+                                loader={bynderImageLoader}
                                 alt={
                                     slide.description && slide.description.length > 0
                                         ? slide.description
                                         : slide.name
                                 }
-                                height={height}
                                 width={width}
-                                unoptimized={true}
+                                height={height}
+                                quality={quality}
                                 src={transformBynderAsset({
                                     slide: slide,
-                                    options: `quality=${quality}&io=transform:fill,width:${width},height:${height},gravity:center`, // fill works well for large image assets
-                                    // `quality=${quality}&io=transform:extend,width:${width},height:${height},background:${background ? background : "cccccc"}` // extend works well for small image assets
+                                    options: `io=transform:fill,gravity:center,width:${width},height:${height}`, // fill works well for large image assets
+                                    // `io=transform:extend,width:${width},height:${height},background:${background ? background : "cccccc"}` // extend works well for small image assets
                                     isUnique
                                 })}
-                                className={`rounded-xl ${background ? background : ""}`}
+                                className={`rounded-xl ${background && isUnique ? background : ""}`}
                             />
                         </div>
                     );
