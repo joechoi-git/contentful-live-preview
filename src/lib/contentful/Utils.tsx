@@ -1,5 +1,6 @@
 import { BLOCKS } from "@contentful/rich-text-types";
 import type { BynderAsset } from "./adjustedTypes";
+import type { ImageLoaderProps } from "next/image";
 
 export const renderOption = {
     renderNode: {
@@ -112,4 +113,9 @@ export const transformBynderAsset = ({
         url = `${url}&${options}`;
     }
     return url;
+};
+
+export const bynderImageLoader = ({ src, quality }: ImageLoaderProps): string => {
+    // width is skipped
+    return `${src}&quality=${quality}`;
 };
