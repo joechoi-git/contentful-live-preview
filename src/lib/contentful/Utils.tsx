@@ -86,20 +86,25 @@ export const convertStringToFriendlyUri = (input: string): string => {
 };
 
 // https://support.bynder.com/hc/en-us/articles/18953104053266-Create-a-DAT-Derivative-Using-URL-Parameters#:~:text=Temperature,image%20as%20possible%20remains%20visible.
-export const transformBynderAsset = (slide: BynderAsset, options?: string): string => {
+export const transformBynderAsset = (
+    slide: BynderAsset,
+    options: string,
+    isRandom?: boolean
+): string => {
     // TO DO: use the custom Bynder loader
     // https://nextjs.org/docs/app/api-reference/next-config-js/images#example-loader-configuration
-    const DEFAULT_CONFIG = `format=webp&date=${getCurrentTimestampWithoutSeconds()}`; // uniqute date without the seconds is added to bypass the cache on the Next.js side
-    const name =
+    const filename =
         slide.tags && slide.tags.length > 0
             ? convertStringToFriendlyUri(slide.name + "-" + slide.tags.join("-"))
             : convertStringToFriendlyUri(slide.name);
     let url = slide.thumbnails.transformBaseUrl;
     url = url.substring(0, url.lastIndexOf("/")); // trim the last bit of the URL
-    url = `${url}/${name}?${DEFAULT_CONFIG}`;
+    url = `${url}/${filename}?format=webp`; // webp format
+    if (isRandom === undefined || isRandom === true) {
+        url = `${url}&date=${getCurrentTimestampWithoutSeconds()}`; // add an unique date without the seconds to bypass the image cache
+    }
     if (options && options.length > 0) {
         url = `${url}&${options}`;
     }
-    // console.log("transformBynderAsset", url);
     return url;
 };
