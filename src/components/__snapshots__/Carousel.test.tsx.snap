@@ -47,13 +47,13 @@ exports[`Carousel matches snapshot 1`] = `
       class="btn bg-secondary hover:bg-accent text-secondary-content"
       href="#carousel-0"
     >
-      0
+      1
     </a>
     <a
       class="btn bg-secondary hover:bg-accent text-secondary-content"
       href="#carousel-1"
     >
-      1
+      2
     </a>
   </div>
 </DocumentFragment>

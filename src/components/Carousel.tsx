@@ -60,7 +60,7 @@ const Carousel: React.FC<CarouselProps> = ({
                             key={`${index}-${slide.id}`}
                             className="btn bg-secondary hover:bg-accent text-secondary-content"
                         >
-                            {index++}
+                            {index + 1}
                         </a>
                     );
                 })}
