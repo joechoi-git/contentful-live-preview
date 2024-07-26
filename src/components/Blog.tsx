@@ -12,15 +12,16 @@ import {
     useContentfulInspectorMode,
     useContentfulLiveUpdates
 } from "@contentful/live-preview/react";
-import type { BlogDetailProps } from "../lib/contentful/adjustedTypes";
+import type { BlogProps, CardProps } from "../lib/contentful/adjustedTypes";
 import { renderOption, isoToFriendlyDate, isoToFriendlyDateTime } from "../lib/contentful/Utils";
 import { ContentfulLivePreview } from "@contentful/live-preview";
 import Iframe from "./Iframe";
 import Card from "./Card";
 import Carousel from "./Carousel";
 
-export const Blog = ({ blog }: { blog: BlogDetailProps }) => {
-    const updatedBlog = useContentfulLiveUpdates(blog);
+export const Blog = ({ blog }: { blog: BlogProps }) => {
+    const updatedBlog: BlogProps = useContentfulLiveUpdates(blog);
+    // console.log("updatedBlog", updatedBlog?.relatedBlogsCollection?.items);
     const inspectorProps = useContentfulInspectorMode({ entryId: blog.sys.id });
 
     return (
@@ -71,7 +72,7 @@ export const Blog = ({ blog }: { blog: BlogDetailProps }) => {
                 </div>
                 {blog?.carousel && blog?.carousel?.length > 0 && (
                     <div {...inspectorProps({ fieldId: "carousel" })}>
-                        <Carousel slides={blog?.carousel} width={1200} height={400} quality={50} />
+                        <Carousel slides={blog?.carousel} width={1200} height={300} quality={50} />
                     </div>
                 )}
                 <div {...inspectorProps({ fieldId: "details" })}>
@@ -90,7 +91,7 @@ export const Blog = ({ blog }: { blog: BlogDetailProps }) => {
                             </h2>
                             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                                 {updatedBlog?.relatedBlogsCollection?.items?.map(
-                                    (blog: BlogDetailProps, index) => (
+                                    (blog: CardProps, index) => (
                                         <Card key={`${index}-${blog?.sys?.id}`} blog={blog} />
                                     )
                                 )}

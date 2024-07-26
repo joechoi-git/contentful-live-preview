@@ -1,14 +1,14 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import type { BlogDetailProps } from "../lib/contentful/adjustedTypes";
+import type { CardProps } from "../lib/contentful/adjustedTypes";
 import { isoToFriendlyDate, isoToFriendlyDateTime } from "../lib/contentful/Utils";
 
-interface CardProps {
-    blog: BlogDetailProps;
+interface CardInterface {
+    blog: CardProps;
 }
 
-const Card: React.FC<CardProps> = ({ blog }) => {
+const Card: React.FC<CardInterface> = ({ blog }) => {
     return blog && blog.slug ? (
         <article className="h-full flex flex-col border-2 border-secondary rounded-xl shadow-xl overflow-hidden">
             <Link href={`/blogs/${blog.slug}`}>
