@@ -50,7 +50,14 @@ export type BynderAsset = {
     src: string;
 };
 
-export interface BlogDetailProps
+export interface CardProps
+    extends Omit<IBlogPostFields, "details" | "heroImage" | "carousel" | "relatedBlogs">,
+        IBlogPost {
+    sys: IBlogPost["sys"] & Sys; // extend with &
+    heroImage: Asset; // override with omit
+}
+
+export interface BlogProps
     extends Omit<IBlogPostFields, "details" | "heroImage" | "carousel">,
         IBlogPost {
     sys: IBlogPost["sys"] & Sys; // extend with &
@@ -58,6 +65,6 @@ export interface BlogDetailProps
     heroImage: Asset; // override with omit
     carousel: BynderAsset[]; // override with omit
     relatedBlogsCollection?: {
-        items: BlogDetailProps[]; // add
+        items: CardProps[]; // add
     };
 }

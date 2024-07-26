@@ -1,7 +1,7 @@
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
 import { getAllBlogs, getBlog } from "../../../lib/contentful/GraphQL";
-import type { BlogDetailProps } from "../../../lib/contentful/adjustedTypes";
+import type { BlogProps } from "../../../lib/contentful/adjustedTypes";
 import { Blog } from "../../../components/Blog";
 import { ContentfulPreviewProvider } from "../../../components/ContentfulPreviewProvider";
 
@@ -11,7 +11,7 @@ export const revalidate = 0;
 export async function generateStaticParams() {
     const allBlogs = await getAllBlogs();
 
-    return allBlogs.map((blog: BlogDetailProps) => ({
+    return allBlogs.map((blog: BlogProps) => ({
         slug: blog.slug
     }));
 }
