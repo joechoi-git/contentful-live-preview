@@ -93,24 +93,27 @@ describe("Utils functions", () => {
 
     describe("transformBynderAsset", () => {
         it("should transform BynderAsset to expected URL", () => {
-            const result = transformBynderAsset(mockBynderAsset);
+            const result = transformBynderAsset({ slide: mockBynderAsset, isUnique: false });
             const expectedUrl =
                 "https://bynder.com/transform-url/sample-asset-tag1-tag2?format=webp";
-            const [urlWithoutDate, datePart] = result.split("&date=");
-            expect(urlWithoutDate).toBe(expectedUrl);
-            expect(datePart).toMatch(/\d{4}-\d{2}-\d{2}-\d{2}-\d{2}/);
+            expect(result).toBe(expectedUrl);
+            // const [urlWithoutDate, datePart] = result.split("&date=");
+            // expect(urlWithoutDate).toBe(expectedUrl);
+            // expect(datePart).toMatch(/\d{4}-\d{2}-\d{2}-\d{2}-\d{2}/);
         });
 
         it("should include custom options if provided", () => {
             const customOptions = "width=300&height=400";
-            const result = transformBynderAsset(mockBynderAsset, customOptions);
+            const result = transformBynderAsset({
+                slide: mockBynderAsset,
+                options: customOptions,
+                isUnique: false
+            });
             const expectedUrlPart =
-                "https://bynder.com/transform-url/sample-asset-tag1-tag2?format=webp";
-            const [urlWithoutDate, datePart] = result.split("&date=");
-            expect(urlWithoutDate).toContain(expectedUrlPart);
+                "https://bynder.com/transform-url/sample-asset-tag1-tag2?format=webp&width=300&height=400";
+            expect(result).toContain(expectedUrlPart);
             expect(result).toContain("width=300");
             expect(result).toContain("height=400");
-            expect(datePart).toMatch(/\d{4}-\d{2}-\d{2}-\d{2}-\d{2}/);
         });
 
         it("should handle asset without tags correctly", () => {
@@ -118,11 +121,9 @@ describe("Utils functions", () => {
                 ...mockBynderAsset,
                 tags: []
             };
-            const result = transformBynderAsset(assetWithoutTags);
+            const result = transformBynderAsset({ slide: assetWithoutTags, isUnique: false });
             const expectedUrl = "https://bynder.com/transform-url/sample-asset?format=webp";
-            const [urlWithoutDate, datePart] = result.split("&date=");
-            expect(urlWithoutDate).toBe(expectedUrl);
-            expect(datePart).toMatch(/\d{4}-\d{2}-\d{2}-\d{2}-\d{2}/);
+            expect(result).toBe(expectedUrl);
         });
     });
 
@@ -149,13 +150,13 @@ describe("Utils functions", () => {
 
         it("should return the current timestamp without seconds in the format YYYY-MM-DD-HH-MM", () => {
             const timestamp = getCurrentTimestampWithoutSeconds();
-            expect(timestamp).toBe("2024-07-25-13-45");
+            expect(timestamp).toBe("20240725-1345");
         });
 
         it("should correctly pad single digit month, day, hour, and minute with leading zeros", () => {
             mockDate("2024-01-05T08:09:00Z");
             const timestamp = getCurrentTimestampWithoutSeconds();
-            expect(timestamp).toBe("2024-01-05-08-09");
+            expect(timestamp).toBe("20240105-0809");
         });
     });
 });

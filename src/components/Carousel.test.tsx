@@ -6,7 +6,7 @@ import type { BynderAsset } from "../lib/contentful/adjustedTypes";
 // Mock the Utils module
 jest.mock("../lib/contentful/Utils", () => ({
     ...jest.requireActual("../lib/contentful/Utils"),
-    getCurrentTimestampWithoutSeconds: jest.fn(() => "2024-07-25-13-45")
+    getCurrentTimestampWithoutSeconds: jest.fn(() => "20240725-1345")
 }));
 
 const mockSlides: BynderAsset[] = [
@@ -131,7 +131,7 @@ describe("Carousel", () => {
                 height={400}
                 quality={80}
                 background="cccccc"
-                isRandom={false}
+                isUnique={false}
             />
         );
         expect(asFragment()).toMatchSnapshot();

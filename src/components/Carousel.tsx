@@ -9,7 +9,7 @@ interface CarouselProps {
     height: number;
     quality: number;
     background?: string; // hex-code
-    isRandom?: boolean;
+    isUnique?: boolean;
 }
 
 const Carousel: React.FC<CarouselProps> = ({
@@ -18,7 +18,7 @@ const Carousel: React.FC<CarouselProps> = ({
     height,
     quality,
     background,
-    isRandom
+    isUnique
 }) => {
     return slides && slides.length > 0 ? (
         <>
@@ -39,12 +39,12 @@ const Carousel: React.FC<CarouselProps> = ({
                                 height={height}
                                 width={width}
                                 unoptimized={true}
-                                src={transformBynderAsset(
-                                    slide,
-                                    `quality=${quality}&io=transform:fill,width:${width},height:${height},gravity:center`, // fill works well for large image assets
+                                src={transformBynderAsset({
+                                    slide: slide,
+                                    options: `quality=${quality}&io=transform:fill,width:${width},height:${height},gravity:center`, // fill works well for large image assets
                                     // `quality=${quality}&io=transform:extend,width:${width},height:${height},background:${background ? background : "cccccc"}` // extend works well for small image assets
-                                    isRandom
-                                )}
+                                    isUnique
+                                })}
                                 className={`rounded-xl ${background ? background : ""}`}
                             />
                         </div>
