@@ -92,7 +92,7 @@ export const transformBynderAsset = (slide: BynderAsset, options?: string): stri
     const DEFAULT_CONFIG = `format=webp&date=${getCurrentTimestampWithoutSeconds()}`; // uniqute date without the seconds is added to bypass the cache on the Next.js side
     const name =
         slide.tags && slide.tags.length > 0
-            ? convertStringToFriendlyUri(slide.tags.join("-"))
+            ? convertStringToFriendlyUri(slide.name + "-" + slide.tags.join("-"))
             : convertStringToFriendlyUri(slide.name);
     let url = slide.thumbnails.transformBaseUrl;
     url = url.substring(0, url.lastIndexOf("/")); // trim the last bit of the URL

@@ -94,7 +94,8 @@ describe("Utils functions", () => {
     describe("transformBynderAsset", () => {
         it("should transform BynderAsset to expected URL", () => {
             const result = transformBynderAsset(mockBynderAsset);
-            const expectedUrl = "https://bynder.com/transform-url/tag1-tag2?format=webp";
+            const expectedUrl =
+                "https://bynder.com/transform-url/sample-asset-tag1-tag2?format=webp";
             const [urlWithoutDate, datePart] = result.split("&date=");
             expect(urlWithoutDate).toBe(expectedUrl);
             expect(datePart).toMatch(/\d{4}-\d{2}-\d{2}-\d{2}-\d{2}/);
@@ -103,7 +104,8 @@ describe("Utils functions", () => {
         it("should include custom options if provided", () => {
             const customOptions = "width=300&height=400";
             const result = transformBynderAsset(mockBynderAsset, customOptions);
-            const expectedUrlPart = "https://bynder.com/transform-url/tag1-tag2?format=webp";
+            const expectedUrlPart =
+                "https://bynder.com/transform-url/sample-asset-tag1-tag2?format=webp";
             const [urlWithoutDate, datePart] = result.split("&date=");
             expect(urlWithoutDate).toContain(expectedUrlPart);
             expect(result).toContain("width=300");

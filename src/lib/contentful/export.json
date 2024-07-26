@@ -12,7 +12,7 @@
         "id": "blogPost",
         "type": "ContentType",
         "createdAt": "2024-06-10T18:11:13.334Z",
-        "updatedAt": "2024-07-19T13:54:02.716Z",
+        "updatedAt": "2024-07-24T18:07:03.017Z",
         "environment": {
           "sys": {
             "id": "master",
@@ -20,8 +20,8 @@
             "linkType": "Environment"
           }
         },
-        "publishedVersion": 13,
-        "publishedAt": "2024-07-19T13:54:02.716Z",
+        "publishedVersion": 19,
+        "publishedAt": "2024-07-24T18:07:03.017Z",
         "firstPublishedAt": "2024-06-10T18:11:13.693Z",
         "createdBy": {
           "sys": {
@@ -37,8 +37,8 @@
             "id": "1ZQUn59WtWWExkKm2Tw3qe"
           }
         },
-        "publishedCounter": 7,
-        "version": 14,
+        "publishedCounter": 10,
+        "version": 20,
         "publishedBy": {
           "sys": {
             "type": "Link",
@@ -101,6 +101,50 @@
           "linkType": "Asset"
         },
         {
+          "id": "date",
+          "name": "Date",
+          "type": "Date",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "author",
+          "name": "Author",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "categoryName",
+          "name": "Category",
+          "type": "Symbol",
+          "localized": false,
+          "required": true,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "carousel",
+          "name": "Carousel",
+          "type": "Object",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
           "id": "details",
           "name": "Details",
           "type": "RichText",
@@ -144,39 +188,6 @@
               "nodes": {
               }
             }
-          ],
-          "disabled": false,
-          "omitted": false
-        },
-        {
-          "id": "date",
-          "name": "Date",
-          "type": "Date",
-          "localized": false,
-          "required": true,
-          "validations": [
-          ],
-          "disabled": false,
-          "omitted": false
-        },
-        {
-          "id": "author",
-          "name": "Author",
-          "type": "Symbol",
-          "localized": false,
-          "required": true,
-          "validations": [
-          ],
-          "disabled": false,
-          "omitted": false
-        },
-        {
-          "id": "categoryName",
-          "name": "Category",
-          "type": "Symbol",
-          "localized": false,
-          "required": true,
-          "validations": [
           ],
           "disabled": false,
           "omitted": false
@@ -239,7 +250,7 @@
             "linkType": "Space"
           }
         },
-        "version": 12,
+        "version": 18,
         "createdAt": "2024-06-10T18:11:13.883Z",
         "createdBy": {
           "sys": {
@@ -248,7 +259,7 @@
             "linkType": "User"
           }
         },
-        "updatedAt": "2024-07-19T13:54:03.239Z",
+        "updatedAt": "2024-07-24T18:07:03.599Z",
         "updatedBy": {
           "sys": {
             "id": "1ZQUn59WtWWExkKm2Tw3qe",
@@ -271,6 +282,26 @@
           }
         }
       },
+      "editors": [
+        {
+          "settings": {
+          },
+          "widgetId": "default-editor",
+          "widgetNamespace": "editor-builtin"
+        },
+        {
+          "settings": {
+          },
+          "widgetId": "tags-editor",
+          "widgetNamespace": "editor-builtin"
+        },
+        {
+          "settings": {
+          },
+          "widgetId": "3fLf4DnjbkN1yUA2V2fMgE",
+          "widgetNamespace": "app"
+        }
+      ],
       "controls": [
         {
           "fieldId": "slug",
@@ -293,11 +324,6 @@
           "widgetNamespace": "builtin"
         },
         {
-          "fieldId": "details",
-          "widgetId": "richTextEditor",
-          "widgetNamespace": "builtin"
-        },
-        {
           "fieldId": "date",
           "widgetId": "datePicker",
           "widgetNamespace": "builtin"
@@ -310,6 +336,16 @@
         {
           "fieldId": "categoryName",
           "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "carousel",
+          "widgetId": "5KySdUzG7OWuCE2V3fgtIa",
+          "widgetNamespace": "app"
+        },
+        {
+          "fieldId": "details",
+          "widgetId": "richTextEditor",
           "widgetNamespace": "builtin"
         },
         {
@@ -329,6 +365,9 @@
           "items": [
             {
               "fieldId": "relatedBlogs"
+            },
+            {
+              "fieldId": "carousel"
             }
           ],
           "groupId": "content"
