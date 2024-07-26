@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import type { BynderAsset } from "../lib/contentful/adjustedTypes";
-import { transformBynderAsset } from "@/lib/contentful/Utils";
+import { transformBynderAsset } from "../lib/contentful/Utils";
 
 interface CarouselProps {
     slides: BynderAsset[];
