@@ -131,6 +131,7 @@ describe("Carousel", () => {
                 height={400}
                 quality={80}
                 background="cccccc"
+                isRandom={false}
             />
         );
         expect(asFragment()).toMatchSnapshot();

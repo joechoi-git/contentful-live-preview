@@ -9,9 +9,17 @@ interface CarouselProps {
     height: number;
     quality: number;
     background?: string; // hex-code
+    isRandom?: boolean;
 }
 
-const Carousel: React.FC<CarouselProps> = ({ slides, width, height, quality, background }) => {
+const Carousel: React.FC<CarouselProps> = ({
+    slides,
+    width,
+    height,
+    quality,
+    background,
+    isRandom
+}) => {
     return slides && slides.length > 0 ? (
         <>
             <div className="carousel w-full p-4">
@@ -33,8 +41,9 @@ const Carousel: React.FC<CarouselProps> = ({ slides, width, height, quality, bac
                                 unoptimized={true}
                                 src={transformBynderAsset(
                                     slide,
-                                    `quality=${quality}&io=transform:fill,width:${width},height:${height},gravity:center` // fill works well for large image assets
+                                    `quality=${quality}&io=transform:fill,width:${width},height:${height},gravity:center`, // fill works well for large image assets
                                     // `quality=${quality}&io=transform:extend,width:${width},height:${height},background:${background ? background : "cccccc"}` // extend works well for small image assets
+                                    isRandom
                                 )}
                                 className={`rounded-xl ${background ? background : ""}`}
                             />
