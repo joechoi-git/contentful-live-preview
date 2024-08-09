@@ -20,6 +20,7 @@
         "@contentful/rich-text-react-renderer": "^15",
         "dotenv": "^16",
         "next": "^14",
+        "next-international": "^1.2.4",
         "react": "^18",
         "react-dom": "^18"
     },

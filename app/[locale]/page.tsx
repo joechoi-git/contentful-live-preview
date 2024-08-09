@@ -1,8 +1,8 @@
-import { getAllBlogs } from "../lib/contentful/GraphQL";
-import type { BlogProps } from "../lib/contentful/adjustedTypes";
+import { getAllBlogs } from "../../lib/contentful/GraphQL";
+import type { BlogProps } from "../../lib/contentful/adjustedTypes";
 import { draftMode } from "next/headers";
-import Iframe from "../components/Iframe";
-import Card from "../components/Card";
+import Iframe from "../../components/Iframe";
+import Card from "../../components/Card";
 
 export const revalidate = 0;
 

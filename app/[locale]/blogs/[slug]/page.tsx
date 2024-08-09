@@ -1,9 +1,9 @@
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
-import { getAllBlogs, getBlog } from "../../../lib/contentful/GraphQL";
-import type { BlogProps } from "../../../lib/contentful/adjustedTypes";
-import { Blog } from "../../../components/Blog";
-import { ContentfulPreviewProvider } from "../../../components/ContentfulPreviewProvider";
+import { getAllBlogs, getBlog } from "../../../../lib/contentful/GraphQL";
+import type { BlogProps } from "../../../../lib/contentful/adjustedTypes";
+import { Blog } from "../../../../components/Blog";
+import { ContentfulPreviewProvider } from "../../../../components/ContentfulPreviewProvider";
 
 export const revalidate = 0;
 
