@@ -20,6 +20,8 @@ export default function Wrapper({ children }: Props): React.JSX.Element {
         document.body.style.display = "block";
     }, [theme]);
 
+    // allow switch
+
     return (
         <body
             data-theme={theme}

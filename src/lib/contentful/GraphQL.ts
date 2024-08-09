@@ -119,7 +119,7 @@ function extractBlogEntries(fetchResponse: { data: { blogPostCollection: { items
 export async function getAllBlogs(limit = 20, isDraftMode = false) {
     const blogs = await fetchGraphQL(
         `query {
-      blogPostCollection(where:{slug_exists: true}, order: date_DESC, limit: ${limit}, preview: ${
+      blogPostCollection(where:{slug_exists: true}, locale: "${process.env.CONTENTFUL_LOCALE}", order: date_DESC, limit: ${limit}, preview: ${
           isDraftMode ? "true" : "false"
       }) {
           items {
@@ -137,7 +137,7 @@ export async function getAllBlogs(limit = 20, isDraftMode = false) {
 export async function getBlog(slug: string, isDraftMode = false) {
     const blog = await fetchGraphQL(
         `query {
-      blogPostCollection(where:{slug: "${slug}"}, limit: 1, preview: ${
+      blogPostCollection(where:{slug: "${slug}"}, locale: "${process.env.CONTENTFUL_LOCALE}", limit: 1, preview: ${
           isDraftMode ? "true" : "false"
       }) {
           items {
@@ -148,5 +148,6 @@ export async function getBlog(slug: string, isDraftMode = false) {
         isDraftMode,
         [slug]
     );
+    // console.log("getBlog", JSON.stringify(blog, null, 4));
     return extractBlogEntries(blog)[0];
 }
