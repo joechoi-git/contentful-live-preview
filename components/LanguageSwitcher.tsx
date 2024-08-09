@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useChangeLocale, useCurrentLocale } from "../../locales/client";
+import { useChangeLocale, useCurrentLocale } from "../locales/client";
 
 interface LanguageSwitcherProps {
     className?: string;
