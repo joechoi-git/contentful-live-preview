@@ -21,23 +21,9 @@ exports[`Nav Component renders correctly when params.slug is not present 1`] = `
     <div
       class="flex gap-4"
     >
-      <p>
-        Locale: en
-      </p>
-      <select
-        class="rounded border-solid border-4 p-2 border-accent bg-primary text-primary-content undefined"
-      >
-        <option
-          value="en-US"
-        >
-          English
-        </option>
-        <option
-          value="es-US"
-        >
-          Spanish
-        </option>
-      </select>
+      <div
+        data-testid="mocked-language-switcher"
+      />
       <select
         class="rounded border-solid border-4 p-2 border-accent bg-primary text-primary-content undefined"
       >
@@ -240,23 +226,9 @@ exports[`Nav Component renders correctly when params.slug is present 1`] = `
     <div
       class="flex gap-4"
     >
-      <p>
-        Locale: en
-      </p>
-      <select
-        class="rounded border-solid border-4 p-2 border-accent bg-primary text-primary-content undefined"
-      >
-        <option
-          value="en-US"
-        >
-          English
-        </option>
-        <option
-          value="es-US"
-        >
-          Spanish
-        </option>
-      </select>
+      <div
+        data-testid="mocked-language-switcher"
+      />
       <select
         class="rounded border-solid border-4 p-2 border-accent bg-primary text-primary-content undefined"
       >

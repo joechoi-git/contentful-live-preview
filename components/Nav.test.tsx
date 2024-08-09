@@ -6,6 +6,12 @@ jest.mock("next/navigation", () => ({
     useParams: jest.fn()
 }));
 
+// Mock the LanguageSwitcher component
+// eslint-disable-next-line react/display-name
+jest.mock("../components/LanguageSwitcher", () => () => (
+    <div data-testid="mocked-language-switcher"></div>
+));
+
 jest.mock("next/link", () => {
     // eslint-disable-next-line react/display-name
     return ({ children, href }: { children: React.ReactNode; href: string }) => (
