@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LanguageSwitcher matches snapshot 1`] = `
+<DocumentFragment>
+  <select
+    class="rounded border-solid border-4 p-2 border-accent bg-primary text-primary-content undefined"
+  >
+    <option
+      value="en-US"
+    >
+      English
+    </option>
+    <option
+      value="es-US"
+    >
+      Spanish
+    </option>
+  </select>
+</DocumentFragment>
+`;

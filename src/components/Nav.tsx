@@ -3,6 +3,7 @@
 import React from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
+import LanguageSwitcher from "../components/LanguageSwitcher";
 import ThemeSwitcher from "../components/ThemeSwitcher";
 
 export default function Nav() {
@@ -10,7 +11,7 @@ export default function Nav() {
 
     return (
         <nav className="flex items-center justify-between border-b-2 border-secondary pb-4 mb-6">
-            <ul className="flex gap-4  text-accent">
+            <ul className="flex gap-4 text-accent">
                 {!params.slug ? (
                     <li className="border-b-4 border-primary font-bold">
                         <Link href="/">Home</Link>
@@ -26,7 +27,10 @@ export default function Nav() {
                     </>
                 )}
             </ul>
-            <ThemeSwitcher />
+            <div className="flex gap-4">
+                <LanguageSwitcher />
+                <ThemeSwitcher />
+            </div>
         </nav>
     );
 }
