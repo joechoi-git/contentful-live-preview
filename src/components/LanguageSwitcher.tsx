@@ -18,7 +18,7 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ className }) => {
         // eslint-disable-next-line react-hooks/rules-of-hooks
         changeLocale = useChangeLocale();
     } catch (error) {
-        console.log((error as Error).message);
+        // console.log((error as Error).message);
     }
 
     useEffect(() => {
