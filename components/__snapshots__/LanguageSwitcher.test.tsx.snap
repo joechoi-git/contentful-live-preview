@@ -2,19 +2,16 @@
 
 exports[`LanguageSwitcher matches snapshot 1`] = `
 <DocumentFragment>
-  <p>
-    Locale: en
-  </p>
   <select
     class="rounded border-solid border-4 p-2 border-accent bg-primary text-primary-content undefined"
   >
     <option
-      value="en-US"
+      value="en"
     >
       English
     </option>
     <option
-      value="es-US"
+      value="es"
     >
       Spanish
     </option>

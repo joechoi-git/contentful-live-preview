@@ -1,24 +1,15 @@
 import { draftMode } from "next/headers";
 import { notFound } from "next/navigation";
-import { getAllBlogs, getBlog } from "../../../../lib/contentful/GraphQL";
-import type { BlogProps } from "../../../../lib/contentful/adjustedTypes";
+import { getBlog } from "../../../../lib/contentful/GraphQL";
 import { Blog } from "../../../../components/Blog";
 import { ContentfulPreviewProvider } from "../../../../components/ContentfulPreviewProvider";
+import { convertLocale } from "@/lib/contentful/Utils";
 
-export const revalidate = 0;
+export const revalidate = 0; // if this is the preview site
 
-// At build time, fetch all slugs to build the blog pages so they are static and cached
-export async function generateStaticParams() {
-    const allBlogs = await getAllBlogs();
-
-    return allBlogs.map((blog: BlogProps) => ({
-        slug: blog.slug
-    }));
-}
-
-export default async function BlogPage({ params }: { params: { slug: string } }) {
+export default async function BlogPage({ params }: { params: { slug: string; locale: string } }) {
     const { isEnabled } = draftMode();
-    const blog = await getBlog(params.slug, isEnabled);
+    const blog = await getBlog(params.slug, isEnabled, params.locale);
 
     if (!blog) {
         notFound();
@@ -26,7 +17,7 @@ export default async function BlogPage({ params }: { params: { slug: string } })
 
     return (
         <ContentfulPreviewProvider
-            locale="en-US"
+            locale={convertLocale(params.locale)}
             enableInspectorMode={isEnabled}
             enableLiveUpdates={isEnabled}
         >

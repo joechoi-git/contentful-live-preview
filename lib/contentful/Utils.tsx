@@ -119,3 +119,8 @@ export const transformBynderAsset = ({
 export const bynderImageLoader = ({ src, quality }: ImageLoaderProps): string => {
     return `${src}&quality=${quality}`;
 };
+
+// en => en-US
+export const convertLocale = (locale: string): string => {
+    return locale === "en" ? "en-US" : "es-US";
+};
