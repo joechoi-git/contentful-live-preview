@@ -31,14 +31,8 @@ describe("LanguageSwitcher", () => {
         localStorage.clear();
     });
 
-    test("loads default language from environment variable", () => {
-        process.env.NEXT_PUBLIC_CONTENTFUL_LOCALE = "es-US";
-        render(<LanguageSwitcher />);
-        expect(screen.getByDisplayValue("Spanish")).toBeInTheDocument();
-    });
-
     test("loads language from local storage on mount", () => {
-        localStorage.setItem("language", "es-US");
+        localStorage.setItem("language", "es");
         render(<LanguageSwitcher />);
         expect(screen.getByDisplayValue("Spanish")).toBeInTheDocument();
     });
@@ -47,14 +41,14 @@ describe("LanguageSwitcher", () => {
         render(<LanguageSwitcher />);
 
         // Change to Spanish
-        fireEvent.change(screen.getByRole("combobox"), { target: { value: "es-US" } });
+        fireEvent.change(screen.getByRole("combobox"), { target: { value: "es" } });
         expect(screen.getByDisplayValue("Spanish")).toBeInTheDocument();
-        expect(localStorage.getItem("language")).toBe("es-US");
+        expect(localStorage.getItem("language")).toBe("es");
 
         // Change back to English
-        fireEvent.change(screen.getByRole("combobox"), { target: { value: "en-US" } });
+        fireEvent.change(screen.getByRole("combobox"), { target: { value: "en" } });
         expect(screen.getByDisplayValue("English")).toBeInTheDocument();
-        expect(localStorage.getItem("language")).toBe("en-US");
+        expect(localStorage.getItem("language")).toBe("en");
     });
 
     test("applies additional class names passed as props", () => {

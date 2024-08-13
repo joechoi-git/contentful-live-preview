@@ -4,7 +4,7 @@ import { getBlog } from "../../../../lib/contentful/GraphQL";
 import { Blog } from "../../../../components/Blog";
 import { ContentfulPreviewProvider } from "../../../../components/ContentfulPreviewProvider";
 
-export const revalidate = 0;
+export const revalidate = 0; // if this is the preview site
 
 /*
 // At build time, fetch all slugs to build the blog pages so they are static and cached

@@ -4,10 +4,9 @@ import { draftMode } from "next/headers";
 import Iframe from "../../components/Iframe";
 import Card from "../../components/Card";
 
-export const revalidate = 0;
+export const revalidate = 0; // if this is the preview site
 
 export default async function Home({ params }: { params: { locale: string } }) {
-    console.log("Home", params);
     const { isEnabled } = draftMode();
     const blogs: BlogProps[] = await getAllBlogs(20, isEnabled, params.locale);
 

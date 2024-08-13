@@ -1,3 +1,5 @@
+import { convertLocale } from "./Utils";
+
 /* eslint-disable indent */
 const BLOG_GRAPHQL_FIELDS = `
     sys {
@@ -119,7 +121,7 @@ function extractBlogEntries(fetchResponse: { data: { blogPostCollection: { items
 export async function getAllBlogs(limit = 20, isDraftMode = false, locale = "en") {
     const blogs = await fetchGraphQL(
         `query {
-      blogPostCollection(where:{slug_exists: true}, locale: "${locale === "en" ? "en-US" : "es-US"}", order: date_DESC, limit: ${limit}, preview: ${
+      blogPostCollection(where:{slug_exists: true}, locale: "${convertLocale(locale)}", order: date_DESC, limit: ${limit}, preview: ${
           isDraftMode ? "true" : "false"
       }) {
           items {
@@ -137,7 +139,7 @@ export async function getAllBlogs(limit = 20, isDraftMode = false, locale = "en"
 export async function getBlog(slug: string, isDraftMode = false, locale = "en") {
     const blog = await fetchGraphQL(
         `query {
-      blogPostCollection(where:{slug: "${slug}"}, locale: "${locale === "en" ? "en-US" : "es-US"}", limit: 1, preview: ${
+      blogPostCollection(where:{slug: "${slug}"}, locale: "${convertLocale(locale)}", limit: 1, preview: ${
           isDraftMode ? "true" : "false"
       }) {
           items {
