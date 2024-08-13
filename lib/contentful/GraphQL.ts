@@ -116,10 +116,10 @@ function extractBlogEntries(fetchResponse: { data: { blogPostCollection: { items
     return fetchResponse?.data?.blogPostCollection?.items;
 }
 
-export async function getAllBlogs(limit = 20, isDraftMode = false) {
+export async function getAllBlogs(limit = 20, isDraftMode = false, locale = "en") {
     const blogs = await fetchGraphQL(
         `query {
-      blogPostCollection(where:{slug_exists: true}, locale: "${process.env.NEXT_PUBLIC_CONTENTFUL_LOCALE}", order: date_DESC, limit: ${limit}, preview: ${
+      blogPostCollection(where:{slug_exists: true}, locale: "${locale === "en" ? "en-US" : "es-US"}", order: date_DESC, limit: ${limit}, preview: ${
           isDraftMode ? "true" : "false"
       }) {
           items {
@@ -134,10 +134,10 @@ export async function getAllBlogs(limit = 20, isDraftMode = false) {
     return extractBlogEntries(blogs);
 }
 
-export async function getBlog(slug: string, isDraftMode = false) {
+export async function getBlog(slug: string, isDraftMode = false, locale = "en") {
     const blog = await fetchGraphQL(
         `query {
-      blogPostCollection(where:{slug: "${slug}"}, locale: "${process.env.NEXT_PUBLIC_CONTENTFUL_LOCALE}", limit: 1, preview: ${
+      blogPostCollection(where:{slug: "${slug}"}, locale: "${locale === "en" ? "en-US" : "es-US"}", limit: 1, preview: ${
           isDraftMode ? "true" : "false"
       }) {
           items {

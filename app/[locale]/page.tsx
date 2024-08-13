@@ -6,9 +6,10 @@ import Card from "../../components/Card";
 
 export const revalidate = 0;
 
-export default async function Home() {
+export default async function Home({ params }: { params: { locale: string } }) {
+    console.log("Home", params);
     const { isEnabled } = draftMode();
-    const blogs: BlogProps[] = await getAllBlogs(20, isEnabled);
+    const blogs: BlogProps[] = await getAllBlogs(20, isEnabled, params.locale);
 
     let draft = 0;
     let published = 0;
@@ -20,6 +21,7 @@ export default async function Home() {
         }
     }
 
+    // TODO: use localized copy
     return (
         <>
             <Iframe />
