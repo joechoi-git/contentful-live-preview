@@ -3,7 +3,7 @@ import type { BlogProps } from "../../lib/contentful/adjustedTypes";
 import { draftMode } from "next/headers";
 import Iframe from "../../components/Iframe";
 import Card from "../../components/Card";
-import { getI18n } from "../../locales/server"; // getScopedI18n
+import { getI18n } from "../../locales/server";
 
 export const revalidate = 0; // if this is the preview site
 
