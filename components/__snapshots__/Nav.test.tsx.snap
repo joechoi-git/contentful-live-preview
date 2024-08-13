@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Nav Component renders correctly when params.slug is not present 1`] = `
+exports[`Nav renders correctly with article link active when slug is present 1`] = `
 <DocumentFragment>
   <nav
     class="flex items-center justify-between border-b-2 border-secondary pb-4 mb-6"
@@ -8,22 +8,40 @@ exports[`Nav Component renders correctly when params.slug is not present 1`] = `
     <ul
       class="flex gap-4 text-accent"
     >
-      <li
-        class="border-b-4 border-primary font-bold"
-      >
+      <li>
         <a
           href="/"
         >
           Home
         </a>
       </li>
+      <li
+        class="border-b-4 border-primary font-bold"
+      >
+        <a
+          href="some-article"
+        >
+          Article
+        </a>
+      </li>
     </ul>
     <div
       class="flex gap-4"
     >
-      <div
-        data-testid="mocked-language-switcher"
-      />
+      <select
+        class="rounded border-solid border-4 p-2 border-accent bg-primary text-primary-content undefined"
+      >
+        <option
+          value="en"
+        >
+          English
+        </option>
+        <option
+          value="es"
+        >
+          Español
+        </option>
+      </select>
       <select
         class="rounded border-solid border-4 p-2 border-accent bg-primary text-primary-content undefined"
       >
@@ -198,7 +216,7 @@ exports[`Nav Component renders correctly when params.slug is not present 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Nav Component renders correctly when params.slug is present 1`] = `
+exports[`Nav renders correctly with home link active when no slug is present 1`] = `
 <DocumentFragment>
   <nav
     class="flex items-center justify-between border-b-2 border-secondary pb-4 mb-6"
@@ -206,29 +224,33 @@ exports[`Nav Component renders correctly when params.slug is present 1`] = `
     <ul
       class="flex gap-4 text-accent"
     >
-      <li>
+      <li
+        class="border-b-4 border-primary font-bold"
+      >
         <a
           href="/"
         >
           Home
         </a>
       </li>
-      <li
-        class="border-b-4 border-primary font-bold"
-      >
-        <a
-          href="test-article"
-        >
-          Article
-        </a>
-      </li>
     </ul>
     <div
       class="flex gap-4"
     >
-      <div
-        data-testid="mocked-language-switcher"
-      />
+      <select
+        class="rounded border-solid border-4 p-2 border-accent bg-primary text-primary-content undefined"
+      >
+        <option
+          value="en"
+        >
+          English
+        </option>
+        <option
+          value="es"
+        >
+          Español
+        </option>
+      </select>
       <select
         class="rounded border-solid border-4 p-2 border-accent bg-primary text-primary-content undefined"
       >

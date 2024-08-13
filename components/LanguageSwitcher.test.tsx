@@ -34,7 +34,7 @@ describe("LanguageSwitcher", () => {
     test("loads language from local storage on mount", () => {
         localStorage.setItem("language", "es");
         render(<LanguageSwitcher />);
-        expect(screen.getByDisplayValue("Spanish")).toBeInTheDocument();
+        expect(screen.getByDisplayValue("Español")).toBeInTheDocument();
     });
 
     test("changes language and stores it in local storage", () => {
@@ -42,7 +42,7 @@ describe("LanguageSwitcher", () => {
 
         // Change to Spanish
         fireEvent.change(screen.getByRole("combobox"), { target: { value: "es" } });
-        expect(screen.getByDisplayValue("Spanish")).toBeInTheDocument();
+        expect(screen.getByDisplayValue("Español")).toBeInTheDocument();
         expect(localStorage.getItem("language")).toBe("es");
 
         // Change back to English

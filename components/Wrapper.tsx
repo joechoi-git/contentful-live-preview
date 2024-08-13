@@ -5,6 +5,8 @@ import { Inter } from "next/font/google";
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import { ThemeContext } from "../context/ThemeContext";
+import { I18nProviderClient } from "../locales/client"; // "../../../locales/client";
+import { DEFAULT_LANGUAGE } from "../lib/contentful/Constants";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +22,14 @@ export default function Wrapper({ children }: Props): React.JSX.Element {
         document.body.style.display = "block";
     }, [theme]);
 
-    // allow switch
+    let savedLanguage = DEFAULT_LANGUAGE;
+    try {
+        if (localStorage && localStorage !== null && localStorage !== undefined) {
+            savedLanguage = localStorage?.getItem("language") || DEFAULT_LANGUAGE;
+        }
+    } catch (error) {
+        // console.log("error", error);
+    }
 
     return (
         <body
@@ -28,11 +37,13 @@ export default function Wrapper({ children }: Props): React.JSX.Element {
             style={{ display: "none" }}
             className={"min-h-screen overflow-x-hidden " + inter.className}
         >
-            <main className="w-full mx-auto container max-w-[1200px] content-center p-6">
-                <Nav />
-                {children}
-                <Footer />
-            </main>
+            <I18nProviderClient locale={savedLanguage}>
+                <main className="w-full mx-auto container max-w-[1200px] content-center p-6">
+                    <Nav />
+                    {children}
+                    <Footer />
+                </main>
+            </I18nProviderClient>
         </body>
     );
 }
