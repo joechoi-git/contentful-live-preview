@@ -6,6 +6,17 @@ import Card from "../../components/Card";
 
 export const revalidate = 0; // if this is the preview site
 
+/*
+// At build time, fetch all slugs to build the blog pages so they are static and cached
+export async function generateStaticParams() {
+    const allBlogs = await getAllBlogs();
+
+    return allBlogs.map((blog: BlogProps) => ({
+        slug: blog.slug
+    }));
+}
+*/
+
 export default async function Home({ params }: { params: { locale: string } }) {
     const { isEnabled } = draftMode();
     const blogs: BlogProps[] = await getAllBlogs(20, isEnabled, params.locale);

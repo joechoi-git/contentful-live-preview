@@ -3,19 +3,9 @@ import { notFound } from "next/navigation";
 import { getBlog } from "../../../../lib/contentful/GraphQL";
 import { Blog } from "../../../../components/Blog";
 import { ContentfulPreviewProvider } from "../../../../components/ContentfulPreviewProvider";
+import { convertLocale } from "@/lib/contentful/Utils";
 
 export const revalidate = 0; // if this is the preview site
-
-/*
-// At build time, fetch all slugs to build the blog pages so they are static and cached
-export async function generateStaticParams() {
-    const allBlogs = await getAllBlogs();
-
-    return allBlogs.map((blog: BlogProps) => ({
-        slug: blog.slug
-    }));
-}
-*/
 
 export default async function BlogPage({ params }: { params: { slug: string; locale: string } }) {
     const { isEnabled } = draftMode();
@@ -27,7 +17,7 @@ export default async function BlogPage({ params }: { params: { slug: string; loc
 
     return (
         <ContentfulPreviewProvider
-            locale="en-US"
+            locale={convertLocale(params.locale)}
             enableInspectorMode={isEnabled}
             enableLiveUpdates={isEnabled}
         >
