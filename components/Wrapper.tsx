@@ -6,6 +6,7 @@ import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import { ThemeContext } from "../context/ThemeContext";
 import { I18nProviderClient } from "../locales/client"; // "../../../locales/client";
+import { DEFAULT_LANGUAGE } from "../lib/contentful/Constants";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,26 +16,16 @@ interface Props {
 
 export default function Wrapper({ children }: Props): React.JSX.Element {
     const { theme } = useContext(ThemeContext);
-    // const [language, setLanguage] = useState<string>("en");
 
     // to remove the flickering effect when loading a theme
     useEffect(() => {
         document.body.style.display = "block";
     }, [theme]);
 
-    /*
-    useEffect(() => {
-        const savedLanguage = localStorage.getItem("language");
-        if (savedLanguage) {
-            setLanguage(savedLanguage);
-        }
-    }, []);
-    */
-
-    let savedLanguage = "en";
+    let savedLanguage = DEFAULT_LANGUAGE;
     try {
         if (localStorage && localStorage !== null && localStorage !== undefined) {
-            savedLanguage = localStorage?.getItem("language") || "en";
+            savedLanguage = localStorage?.getItem("language") || DEFAULT_LANGUAGE;
         }
     } catch (error) {
         // console.log("error", error);
@@ -46,7 +37,7 @@ export default function Wrapper({ children }: Props): React.JSX.Element {
             style={{ display: "none" }}
             className={"min-h-screen overflow-x-hidden " + inter.className}
         >
-            <I18nProviderClient locale={savedLanguage ? savedLanguage : "en"}>
+            <I18nProviderClient locale={savedLanguage}>
                 <main className="w-full mx-auto container max-w-[1200px] content-center p-6">
                     <Nav />
                     {children}

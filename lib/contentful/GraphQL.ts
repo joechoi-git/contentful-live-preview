@@ -1,3 +1,4 @@
+import { DEFAULT_LANGUAGE } from "./Constants";
 import { convertLocale } from "./Utils";
 
 /* eslint-disable indent */
@@ -118,7 +119,7 @@ function extractBlogEntries(fetchResponse: { data: { blogPostCollection: { items
     return fetchResponse?.data?.blogPostCollection?.items;
 }
 
-export async function getAllBlogs(limit = 20, isDraftMode = false, locale = "en") {
+export async function getAllBlogs(limit = 20, isDraftMode = false, locale = DEFAULT_LANGUAGE) {
     // console.log("getAllBlogs", limit, isDraftMode, locale);
     const blogs = await fetchGraphQL(
         `query {
@@ -137,7 +138,7 @@ export async function getAllBlogs(limit = 20, isDraftMode = false, locale = "en"
     return extractBlogEntries(blogs);
 }
 
-export async function getBlog(slug: string, isDraftMode = false, locale = "en") {
+export async function getBlog(slug: string, isDraftMode = false, locale = DEFAULT_LANGUAGE) {
     // console.log("getBlog", slug, isDraftMode, locale);
     const blog = await fetchGraphQL(
         `query {

@@ -1,10 +1,11 @@
 // middleware.ts
 import { createI18nMiddleware } from "next-international/middleware";
 import { NextRequest } from "next/server";
+import { DEFAULT_LANGUAGE } from "./lib/contentful/Constants";
 
 const I18nMiddleware = createI18nMiddleware({
     locales: ["en", "es"],
-    defaultLocale: "en",
+    defaultLocale: DEFAULT_LANGUAGE,
     urlMappingStrategy: "redirect"
 });
 

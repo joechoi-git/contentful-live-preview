@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useChangeLocale, useCurrentLocale } from "../locales/client";
+import { DEFAULT_LANGUAGE } from "../lib/contentful/Constants";
 
 interface LanguageSwitcherProps {
     className?: string;
@@ -8,7 +9,7 @@ interface LanguageSwitcherProps {
 type Language = "en" | "es";
 
 const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ className }) => {
-    const [language, setLanguage] = useState<string>("en");
+    const [language, setLanguage] = useState<string>(DEFAULT_LANGUAGE);
 
     let currentLocale = undefined;
     let changeLocale = undefined;
