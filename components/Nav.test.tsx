@@ -19,6 +19,10 @@ jest.mock("next/link", () => {
     );
 });
 
+jest.mock("../locales/client", () => ({
+    useI18n: jest.fn()
+}));
+
 describe("Nav Component", () => {
     const useParamsMock = require("next/navigation").useParams;
 
