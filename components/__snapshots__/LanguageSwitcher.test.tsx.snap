@@ -13,7 +13,7 @@ exports[`LanguageSwitcher matches snapshot 1`] = `
     <option
       value="es"
     >
-      Spanish
+      Español
     </option>
   </select>
 </DocumentFragment>

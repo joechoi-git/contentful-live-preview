@@ -5,9 +5,11 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import LanguageSwitcher from "../components/LanguageSwitcher";
 import ThemeSwitcher from "../components/ThemeSwitcher";
+// import { useI18n } from "../locales/client";
 
 export default function Nav() {
     const params = useParams();
+    // const i18n = useI18n();
 
     return (
         <nav className="flex items-center justify-between border-b-2 border-secondary pb-4 mb-6">

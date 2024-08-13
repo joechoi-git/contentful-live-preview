@@ -52,7 +52,7 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ className }) => {
                 className={`rounded border-solid border-4 p-2 border-accent bg-primary text-primary-content ${className}`}
             >
                 <option value="en">English</option>
-                <option value="es">Spanish</option>
+                <option value="es">Español</option>
             </select>
         </>
     );
