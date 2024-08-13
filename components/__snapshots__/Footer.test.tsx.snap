@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer renders correctly with i18n translations 1`] = `
+<DocumentFragment>
+  <footer
+    class="mt-6 w-full text-center border-t-2 border-secondary py-6"
+  >
+    <p>
+      Sample Application
+    </p>
+    <p>
+      <a
+        class="text-accent"
+        href="https://github.com/joechoi-git/contentful-live-preview"
+        target="_blank"
+      >
+        Open GitHub
+      </a>
+    </p>
+    <p
+      class="pt-6"
+    >
+      © 2024
+    </p>
+  </footer>
+</DocumentFragment>
+`;

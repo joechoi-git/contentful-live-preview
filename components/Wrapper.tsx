@@ -32,8 +32,12 @@ export default function Wrapper({ children }: Props): React.JSX.Element {
     */
 
     let savedLanguage = "en";
-    if (localStorage && localStorage !== null && localStorage !== undefined) {
-        savedLanguage = localStorage?.getItem("language") || "en";
+    try {
+        if (localStorage && localStorage !== null && localStorage !== undefined) {
+            savedLanguage = localStorage?.getItem("language") || "en";
+        }
+    } catch (error) {
+        // console.log("error", error);
     }
 
     return (

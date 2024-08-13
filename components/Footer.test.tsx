@@ -1,5 +1,4 @@
 /* eslint-disable indent */
-/* eslint-disable react/display-name */
 import React from "react";
 import { render } from "@testing-library/react";
 import Footer from "../components/Footer";
@@ -22,10 +21,12 @@ describe("Footer", () => {
             }
         });
 
-        const { getByText } = render(<Footer />);
+        const { getByText, asFragment } = render(<Footer />);
 
         expect(getByText("Sample Application")).toBeInTheDocument();
         expect(getByText("Open GitHub")).toBeInTheDocument();
         expect(getByText(`© ${new Date().getFullYear()}`)).toBeInTheDocument();
+
+        expect(asFragment()).toMatchSnapshot();
     });
 });
