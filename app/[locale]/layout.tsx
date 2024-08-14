@@ -1,8 +1,8 @@
 import React from "react";
 import type { Metadata } from "next";
-import Wrapper from "../components/Wrapper";
-import Draft from "../components/Draft";
-import { ThemeProvider } from "../context/ThemeContext";
+import Wrapper from "../../components/Wrapper";
+import Draft from "../../components/Draft";
+import { ThemeProvider } from "../../context/ThemeContext";
 import "./globals.css";
 
 export const metadata: Metadata = {
