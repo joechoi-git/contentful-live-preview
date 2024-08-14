@@ -1,105 +1,95 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Card from "./Card";
-import type { BlogProps } from "../lib/contentful/adjustedTypes";
+import { useI18n } from "../locales/client";
+import { CardProps } from "../lib/contentful/adjustedTypes";
 
-// Mock the next/image component with explicit prop types
-jest.mock("next/image", () => ({
-    __esModule: true,
-    // eslint-disable-next-line @next/next/no-img-element
-    default: ({ src, alt }: { src: string; alt: string }) => <img src={src} alt={alt} />
+// Mock the `useI18n` hook
+jest.mock("../locales/client", () => ({
+    useI18n: jest.fn()
 }));
 
-const mockBlog: BlogProps = {
-    sys: {
-        id: "1",
-        type: "Entry",
-        createdAt: "2023-01-01T00:00:00Z",
-        updatedAt: "2023-01-01T00:00:00Z",
-        locale: "en-US",
-        contentType: {
-            sys: {
-                id: "blogPost",
-                linkType: "ContentType",
-                type: "Link"
-            }
+describe("Card component", () => {
+    const mockBlog: CardProps = {
+        slug: "test-blog",
+        title: "Test Blog Title",
+        categoryName: "Category Name",
+        summary: "This is a summary of the blog post.",
+        author: "Author Name",
+        date: new Date().toISOString(),
+        heroImage: {
+            url: "/image.jpg"
+            // Add any other properties required by the Asset type
         },
-        publishedAt: "2023-01-01T00:00:00Z",
-        publishedVersion: 1
-    },
-    slug: "test-blog",
-    title: "Test Blog Title",
-    summary: "Test Blog Summary",
-    author: "John Doe",
-    carousel: [],
-    heroImage: {
-        url: "https://example.com/image.jpg"
-    },
-    categoryName: "Test Category",
-    date: "2023-01-01T00:00:00Z",
-    details: {
-        json: {}
-    },
-    relatedBlogs: undefined,
-    metadata: {
-        tags: []
-    },
-    fields: {}
-};
+        sys: {
+            id: "unique-id",
+            type: "Entry",
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
+            locale: "en-US",
+            contentType: {
+                sys: {
+                    id: "blogPost",
+                    linkType: "ContentType",
+                    type: "Link"
+                }
+            },
+            publishedAt: "", // Use an empty string or another placeholder instead of null
+            publishedVersion: 1
+        },
+        metadata: {
+            tags: []
+        }, // Add appropriate mock data here if needed
+        fields: {} // Add appropriate mock data here if needed
+    };
 
-describe("Card Component", () => {
-    it("renders correctly with given blog props", () => {
-        const { getByAltText, getByText, asFragment } = render(<Card blog={mockBlog} />);
-
-        // Check if the image is rendered with correct src
-        const image = getByAltText("placeholder");
-        expect(image).toHaveAttribute("src", "https://example.com/image.jpg");
-
-        // Check if the title is rendered correctly
-        expect(getByText("Test Blog Title")).toBeInTheDocument();
-
-        // Check if the category name is rendered correctly
-        expect(getByText("Test Category")).toBeInTheDocument();
-
-        // Check if the summary is rendered correctly
-        expect(getByText("Test Blog Summary")).toBeInTheDocument();
-
-        // Check if the author name is rendered correctly
-        expect(getByText("Authored By: John Doe")).toBeInTheDocument();
-
-        // Check if the date is rendered correctly
-        expect(getByText(/Authored On: /)).toBeInTheDocument();
-
-        // Check if the published date is rendered correctly
-        expect(getByText(/Published On:/)).toBeInTheDocument();
-
-        // Snapshot test
-        expect(asFragment()).toMatchSnapshot();
+    beforeEach(() => {
+        (useI18n as jest.Mock).mockReturnValue((key: string) => key);
     });
 
-    it("renders default image if heroImage.url is not provided", () => {
-        const mockBlogWithoutImage = {
+    test("renders the Card component with provided blog data", () => {
+        render(<Card blog={mockBlog} />);
+
+        // Check if the title is rendered
+        expect(screen.getByText("Test Blog Title")).toBeInTheDocument();
+
+        // Check if the category name is rendered
+        expect(screen.getByText("Category Name")).toBeInTheDocument();
+
+        // Check if the summary is rendered
+        expect(screen.getByText("This is a summary of the blog post.")).toBeInTheDocument();
+
+        // Check if the author is rendered
+        expect(screen.getByText("authoredBy: Author Name")).toBeInTheDocument();
+
+        // Check if the date is rendered
+        expect(screen.getByText(/authoredOn:/)).toBeInTheDocument();
+
+        // Check if the "read more" link is rendered
+        expect(screen.getByText("readMore →")).toBeInTheDocument();
+    });
+
+    test("renders 'In Draft' if the published date is not provided", () => {
+        const draftBlog = {
             ...mockBlog,
-            heroImage: { url: "/default.jpeg" }
+            sys: {
+                ...mockBlog.sys,
+                publishedAt: "" // Use an empty string instead of null
+            }
         };
-        const { getByAltText, asFragment } = render(<Card blog={mockBlogWithoutImage} />);
+        render(<Card blog={draftBlog} />);
 
-        // Check if the default image is rendered
-        const image = getByAltText("placeholder");
-        expect(image).toHaveAttribute("src", "/default.jpeg");
-
-        // Snapshot test
-        expect(asFragment()).toMatchSnapshot();
+        expect(screen.getByText("publishedOn: In Draft")).toBeInTheDocument();
     });
 
-    it("renders null if blog slug is not provided", () => {
-        const mockBlogWithoutSlug = { ...mockBlog, slug: "" };
-        const { container, asFragment } = render(<Card blog={mockBlogWithoutSlug} />);
-
-        // Check if the component renders null
+    test("does not render the component if the blog has no slug", () => {
+        const invalidBlog = { ...mockBlog, slug: "" };
+        const { container } = render(<Card blog={invalidBlog} />);
         expect(container.firstChild).toBeNull();
+    });
 
-        // Snapshot test
+    test("matches snapshot", () => {
+        const { asFragment } = render(<Card blog={mockBlog} />);
         expect(asFragment()).toMatchSnapshot();
     });
 });

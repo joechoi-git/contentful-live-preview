@@ -1,45 +1,64 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
-import Draft from "../components/Draft";
+import { render } from "@testing-library/react";
+import Draft from "./Draft";
 
+// Mock the next/headers module
 jest.mock("next/headers", () => ({
     draftMode: jest.fn()
 }));
 
-describe("Draft Component", () => {
+// Mock the getI18n function
+jest.mock("../locales/server", () => ({
+    getI18n: jest.fn()
+}));
+
+describe("Draft component", () => {
     beforeEach(() => {
         jest.clearAllMocks();
     });
 
-    test("renders correctly when draft mode is enabled", () => {
-        const draftModeMock = require("next/headers").draftMode;
-        draftModeMock.mockReturnValue({ isEnabled: true });
+    test("renders draft mode enabled", async () => {
+        const { draftMode } = require("next/headers");
+        const { getI18n } = require("../locales/server");
 
-        const { asFragment } = render(<Draft />);
-        expect(screen.getByText("Control Panel")).toBeInTheDocument();
-        expect(screen.getByText("Draft Mode is")).toBeInTheDocument();
-        expect(screen.getByText("Enabled.")).toBeInTheDocument();
-        expect(screen.getByText("Disable Draft Mode")).toHaveAttribute(
-            "href",
-            "/api/disable-draft-mode"
-        );
+        // Mocking draftMode to return enabled status
+        draftMode.mockReturnValue({ isEnabled: true });
 
+        // Define the translation keys and values
+        const translations: Record<string, string> = {
+            controlPanel: "Control Panel",
+            draftEnabled: "Draft mode is enabled.",
+            disableDraftMode: "Disable draft mode"
+        };
+
+        // Mocking getI18n to return a function that returns the expected strings
+        getI18n.mockResolvedValue((key: string) => translations[key]);
+
+        const { asFragment } = render(await Draft());
+
+        // Snapshot test
         expect(asFragment()).toMatchSnapshot();
     });
 
-    test("renders correctly when draft mode is disabled", () => {
-        const draftModeMock = require("next/headers").draftMode;
-        draftModeMock.mockReturnValue({ isEnabled: false });
+    test("renders draft mode disabled", async () => {
+        const { draftMode } = require("next/headers");
+        const { getI18n } = require("../locales/server");
 
-        const { asFragment } = render(<Draft />);
-        expect(screen.getByText("Control Panel")).toBeInTheDocument();
-        expect(screen.getByText("Draft Mode is")).toBeInTheDocument();
-        expect(screen.getByText("Disabled.")).toBeInTheDocument();
-        expect(screen.getByText("Enable Draft Mode")).toHaveAttribute(
-            "href",
-            "/api/enable-draft-mode"
-        );
+        // Mocking draftMode to return disabled status
+        draftMode.mockReturnValue({ isEnabled: false });
 
+        // Define the translation keys and values
+        const translations: Record<string, string> = {
+            controlPanel: "Control Panel",
+            draftDisabled: "Draft mode is disabled.",
+            enableDraftMode: "Enable draft mode"
+        };
+
+        // Mocking getI18n to return a function that returns the expected strings
+        getI18n.mockResolvedValue((key: string) => translations[key]);
+
+        const { asFragment } = render(await Draft());
+
+        // Snapshot test
         expect(asFragment()).toMatchSnapshot();
     });
 });

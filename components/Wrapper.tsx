@@ -28,7 +28,7 @@ export default function Wrapper({ children }: Props): React.JSX.Element {
             savedLanguage = localStorage?.getItem("language") || DEFAULT_LANGUAGE;
         }
     } catch (error) {
-        // console.log("error", error);
+        /* empty */
     }
 
     return (
