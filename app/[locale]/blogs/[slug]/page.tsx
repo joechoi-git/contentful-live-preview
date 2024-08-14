@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { getBlog } from "../../../../lib/contentful/GraphQL";
 import { Blog } from "../../../../components/Blog";
 import { ContentfulPreviewProvider } from "../../../../components/ContentfulPreviewProvider";
-import { convertLocale } from "@/lib/contentful/Utils";
+import { convertLocale } from "../../../../lib/contentful/Utils";
 
 export const revalidate = 0; // if this is the preview site
 

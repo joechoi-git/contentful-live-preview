@@ -3,7 +3,8 @@ import {
     isoToFriendlyDateTime,
     convertStringToFriendlyUri,
     transformBynderAsset,
-    getCurrentTimestampWithoutSeconds
+    getCurrentTimestampWithoutSeconds,
+    convertLocale
 } from "./Utils";
 import type { BynderAsset } from "./adjustedTypes";
 
@@ -165,6 +166,26 @@ describe("Utils functions", () => {
             mockDate("2024-01-05T08:09:00Z");
             const timestamp = getCurrentTimestampWithoutSeconds();
             expect(timestamp).toBe("20240105-0809");
+        });
+    });
+
+    describe("convertLocale", () => {
+        test("returns en-US when locale is en", () => {
+            expect(convertLocale("en")).toBe("en-US");
+        });
+
+        test("returns es-US when locale is not en", () => {
+            expect(convertLocale("es")).toBe("es-US");
+            expect(convertLocale("fr")).toBe("es-US");
+            expect(convertLocale("de")).toBe("es-US");
+            expect(convertLocale("")).toBe("es-US");
+        });
+
+        test("handles unexpected input gracefully", () => {
+            expect(convertLocale("unknown")).toBe("es-US");
+            expect(convertLocale("123")).toBe("es-US");
+            expect(convertLocale(undefined as any)).toBe("es-US");
+            expect(convertLocale(null as any)).toBe("es-US");
         });
     });
 });
