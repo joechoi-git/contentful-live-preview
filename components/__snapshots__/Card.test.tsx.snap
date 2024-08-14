@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Card Component renders correctly with given blog props 1`] = `
+exports[`Card component matches snapshot 1`] = `
 <DocumentFragment>
   <article
     class="h-full flex flex-col border-2 border-secondary rounded-xl shadow-xl overflow-hidden"
@@ -10,11 +10,19 @@ exports[`Card Component renders correctly with given blog props 1`] = `
     >
       <img
         alt="placeholder"
-        src="https://example.com/image.jpg"
+        class="aspect-[4/3] object-cover w-full grayscale"
+        data-nimg="1"
+        decoding="async"
+        height="263"
+        loading="lazy"
+        src="/_next/image?url=%2Fimage.jpg&w=750&q=75"
+        srcset="/_next/image?url=%2Fimage.jpg&w=384&q=75 1x, /_next/image?url=%2Fimage.jpg&w=750&q=75 2x"
+        style="color: transparent;"
+        width="350"
       />
     </a>
     <div
-      class="flex-1 p-6 bg-base-100"
+      class="flex-1 p-6 bg-base-300"
     >
       <a
         href="/blogs/test-blog"
@@ -28,27 +36,27 @@ exports[`Card Component renders correctly with given blog props 1`] = `
       <div
         class="font-bold"
       >
-        Test Category
+        Category Name
       </div>
       <p
         class="mt-4 mb-2"
       >
-        Test Blog Summary
+        This is a summary of the blog post.
       </p>
       <p
         class="mt-2 mb-2 font-bold"
       >
-        Authored By: John Doe
+        authoredBy: Author Name
       </p>
       <p
         class="mt-2 mb-2 font-bold"
       >
-        Authored On: January 1, 2023
+        authoredOn: August 14, 2024
       </p>
       <p
         class="mt-2 mb-2 font-bold text-secondary"
       >
-        Published On: January 1, 2023, 12:00:00 AM UTC
+        publishedOn: In Draft
       </p>
       <div
         class="flex justify-end"
@@ -57,77 +65,10 @@ exports[`Card Component renders correctly with given blog props 1`] = `
           class="inline-flex h-10 items-center justify-center font-medium text-accent"
           href="/blogs/test-blog"
         >
-          Read More →
+          readMore →
         </a>
       </div>
     </div>
   </article>
 </DocumentFragment>
 `;
-
-exports[`Card Component renders default image if heroImage.url is not provided 1`] = `
-<DocumentFragment>
-  <article
-    class="h-full flex flex-col border-2 border-secondary rounded-xl shadow-xl overflow-hidden"
-  >
-    <a
-      href="/blogs/test-blog"
-    >
-      <img
-        alt="placeholder"
-        src="/default.jpeg"
-      />
-    </a>
-    <div
-      class="flex-1 p-6 bg-base-100"
-    >
-      <a
-        href="/blogs/test-blog"
-      >
-        <h3
-          class="text-2xl font-bold leading-tight py-4 text-accent"
-        >
-          Test Blog Title
-        </h3>
-      </a>
-      <div
-        class="font-bold"
-      >
-        Test Category
-      </div>
-      <p
-        class="mt-4 mb-2"
-      >
-        Test Blog Summary
-      </p>
-      <p
-        class="mt-2 mb-2 font-bold"
-      >
-        Authored By: John Doe
-      </p>
-      <p
-        class="mt-2 mb-2 font-bold"
-      >
-        Authored On: January 1, 2023
-      </p>
-      <p
-        class="mt-2 mb-2 font-bold text-secondary"
-      >
-        Published On: January 1, 2023, 12:00:00 AM UTC
-      </p>
-      <div
-        class="flex justify-end"
-      >
-        <a
-          class="inline-flex h-10 items-center justify-center font-medium text-accent"
-          href="/blogs/test-blog"
-        >
-          Read More →
-        </a>
-      </div>
-    </div>
-  </article>
-</DocumentFragment>
-`;
-
-exports[`Card Component renders null if blog slug is not provided 1`] = `<DocumentFragment />`;

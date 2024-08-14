@@ -18,8 +18,10 @@ import { ContentfulLivePreview } from "@contentful/live-preview";
 import Iframe from "./Iframe";
 import Card from "./Card";
 import Carousel from "./Carousel";
+import { useI18n } from "../locales/client";
 
 export const Blog = ({ blog }: { blog: BlogProps }) => {
+    const i18n = useI18n();
     const updatedBlog: BlogProps = useContentfulLiveUpdates(blog);
     // console.log("updatedBlog", updatedBlog?.relatedBlogsCollection?.items);
     const inspectorProps = useContentfulInspectorMode({ entryId: blog.sys.id });
@@ -57,14 +59,14 @@ export const Blog = ({ blog }: { blog: BlogProps }) => {
                 />
                 <div className="md:text-lg/relaxed lg:text-sm/relaxed xl:text-lg/relaxed">
                     <p {...inspectorProps({ fieldId: "author" })}>
-                        Authored By: {updatedBlog.author}
+                        {i18n("authoredBy")}: {updatedBlog.author}
                     </p>
                     <p {...inspectorProps({ fieldId: "date" })}>
-                        Authored On:{" "}
+                        {i18n("authoredOn")}:{" "}
                         {updatedBlog.date ? isoToFriendlyDate(updatedBlog.date.toString()) : ""}
                     </p>
                     <p className="text-secondary">
-                        Published On:{" "}
+                        {i18n("publishedOn")}:{" "}
                         {blog.sys.publishedAt
                             ? isoToFriendlyDateTime(blog.sys.publishedAt.toString())
                             : "In Draft"}
@@ -87,7 +89,7 @@ export const Blog = ({ blog }: { blog: BlogProps }) => {
                                 className="text-2xl font-bold tracking-tighter sm:text-5xl mb-8"
                                 {...inspectorProps({ fieldId: "relatedBlogs" })}
                             >
-                                Related Blogs
+                                {i18n("relatedBlogs")}
                             </h2>
                             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                                 {updatedBlog?.relatedBlogsCollection?.items?.map(

@@ -1,14 +1,18 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import type { CardProps } from "../lib/contentful/adjustedTypes";
 import { isoToFriendlyDate, isoToFriendlyDateTime } from "../lib/contentful/Utils";
+import { useI18n } from "../locales/client";
 
 interface CardInterface {
     blog: CardProps;
 }
 
 const Card: React.FC<CardInterface> = ({ blog }) => {
+    const i18n = useI18n();
     return blog && blog.slug ? (
         <article className="h-full flex flex-col border-2 border-secondary rounded-xl shadow-xl overflow-hidden">
             <Link href={`/blogs/${blog.slug}`}>
@@ -28,12 +32,14 @@ const Card: React.FC<CardInterface> = ({ blog }) => {
                 </Link>
                 <div className="font-bold">{blog.categoryName}</div>
                 <p className="mt-4 mb-2">{blog.summary}</p>
-                <p className="mt-2 mb-2 font-bold">Authored By: {blog.author}</p>
                 <p className="mt-2 mb-2 font-bold">
-                    Authored On: {blog.date ? isoToFriendlyDate(blog.date.toString()) : ""}
+                    {i18n("authoredBy")}: {blog.author}
+                </p>
+                <p className="mt-2 mb-2 font-bold">
+                    {i18n("authoredOn")}: {blog.date ? isoToFriendlyDate(blog.date.toString()) : ""}
                 </p>
                 <p className="mt-2 mb-2 font-bold text-secondary">
-                    Published On:{" "}
+                    {i18n("publishedOn")}:{" "}
                     {blog.sys.publishedAt
                         ? isoToFriendlyDateTime(blog.sys.publishedAt.toString())
                         : "In Draft"}
@@ -43,7 +49,7 @@ const Card: React.FC<CardInterface> = ({ blog }) => {
                         className="inline-flex h-10 items-center justify-center font-medium text-accent"
                         href={`/blogs/${blog.slug}`}
                     >
-                        Read More →
+                        {i18n("readMore")} →
                     </Link>
                 </div>
             </div>

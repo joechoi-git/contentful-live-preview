@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Draft Component renders correctly when draft mode is disabled 1`] = `
+exports[`Draft component renders draft mode disabled 1`] = `
 <DocumentFragment>
   <div
     class="my-6 border-4 border-accent bg-primary text-primary-content rounded w-full p-4 flex gap-4"
@@ -14,23 +14,19 @@ exports[`Draft Component renders correctly when draft mode is disabled 1`] = `
     <p
       class="text-secondary-content"
     >
-      Draft Mode is 
-      <strong>
-        Disabled.
-      </strong>
-       
+      Draft mode is disabled. 
       <a
         class="text-primary-content underline"
         href="/api/enable-draft-mode"
       >
-        Enable Draft Mode
+        Enable draft mode
       </a>
     </p>
   </div>
 </DocumentFragment>
 `;
 
-exports[`Draft Component renders correctly when draft mode is enabled 1`] = `
+exports[`Draft component renders draft mode enabled 1`] = `
 <DocumentFragment>
   <div
     class="my-6 border-4 border-accent bg-primary text-primary-content rounded w-full p-4 flex gap-4"
@@ -44,16 +40,12 @@ exports[`Draft Component renders correctly when draft mode is enabled 1`] = `
     <p
       class="text-primary-content"
     >
-      Draft Mode is 
-      <strong>
-        Enabled.
-      </strong>
-       
+      Draft mode is enabled. 
       <a
         class="text-primary-content underline"
         href="/api/disable-draft-mode"
       >
-        Disable Draft Mode
+        Disable draft mode
       </a>
     </p>
   </div>

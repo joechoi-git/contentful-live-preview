@@ -43,10 +43,6 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ className }) => {
 
     return (
         <>
-            {/*}
-            <p>Locale: {currentLocale}</p>
-            <p>Language: {language}</p>
-            {*/}
             <select
                 value={language}
                 onChange={handleLanguageChange}

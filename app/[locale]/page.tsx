@@ -20,6 +20,7 @@ export async function generateStaticParams() {
 
 export default async function Home({ params }: { params: { locale: string } }) {
     const { isEnabled } = draftMode();
+    const i18n = await getI18n();
     const blogs: BlogProps[] = await getAllBlogs(20, isEnabled, params.locale);
 
     let draft = 0;
@@ -31,8 +32,6 @@ export default async function Home({ params }: { params: { locale: string } }) {
             draft = draft + 1;
         }
     }
-
-    const i18n = await getI18n();
 
     return (
         <>

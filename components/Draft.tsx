@@ -1,26 +1,28 @@
 import React from "react";
 import { draftMode } from "next/headers";
+import { getI18n } from "../locales/server";
 
-export default function Draft() {
+export default async function Draft() {
     const { isEnabled } = draftMode();
+    const i18n = await getI18n();
     return (
         <div
             id="control-panel"
             className="my-6 border-4 border-accent bg-primary text-primary-content rounded w-full p-4 flex gap-4"
         >
-            <p className="font-bold">Control Panel</p>
+            <p className="font-bold">{i18n("controlPanel")}</p>
             {isEnabled ? (
                 <p className="text-primary-content">
-                    Draft Mode is <strong>Enabled.</strong>{" "}
+                    {i18n("draftEnabled")}{" "}
                     <a href="/api/disable-draft-mode" className="text-primary-content underline">
-                        Disable Draft Mode
+                        {i18n("disableDraftMode")}
                     </a>
                 </p>
             ) : (
                 <p className="text-secondary-content">
-                    Draft Mode is <strong>Disabled.</strong>{" "}
+                    {i18n("draftDisabled")}{" "}
                     <a href="/api/enable-draft-mode" className="text-primary-content underline">
-                        Enable Draft Mode
+                        {i18n("enableDraftMode")}
                     </a>
                 </p>
             )}
