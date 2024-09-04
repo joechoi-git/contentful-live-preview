@@ -7,9 +7,10 @@ import { convertLocale } from "../../../../lib/contentful/Utils";
 
 export const revalidate = 0; // if this is the preview site
 
-export default async function BlogPage({ params }: { params: { slug: string; locale: string } }) {
+export default async function BlogPage({ params }: { params: { slug: string[]; locale: string } }) {
     const { isEnabled } = draftMode();
-    const blog = await getBlog(params.slug, isEnabled, params.locale);
+    const slug = params.slug.join("/");
+    const blog = await getBlog(slug, isEnabled, params.locale);
 
     if (!blog) {
         notFound();
