@@ -67,14 +67,19 @@ export const Blog = ({ blog }: { blog: BlogProps }) => {
                     </p>
                     <p className="text-secondary">
                         {i18n("publishedOn")}:{" "}
-                        {blog.sys.publishedAt
-                            ? isoToFriendlyDateTime(blog.sys.publishedAt.toString())
+                        {updatedBlog.sys.publishedAt
+                            ? isoToFriendlyDateTime(updatedBlog.sys.publishedAt.toString())
                             : "In Draft"}
                     </p>
                 </div>
-                {blog?.carousel && blog?.carousel?.length > 0 && (
+                {updatedBlog?.carousel && updatedBlog?.carousel?.length > 0 && (
                     <div {...inspectorProps({ fieldId: "carousel" })}>
-                        <Carousel slides={blog?.carousel} width={1200} height={300} quality={50} />
+                        <Carousel
+                            slides={updatedBlog?.carousel}
+                            width={1200}
+                            height={300}
+                            quality={50}
+                        />
                     </div>
                 )}
                 <div {...inspectorProps({ fieldId: "details" })}>
@@ -93,8 +98,11 @@ export const Blog = ({ blog }: { blog: BlogProps }) => {
                             </h2>
                             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                                 {updatedBlog?.relatedBlogsCollection?.items?.map(
-                                    (blog: CardProps, index) => (
-                                        <Card key={`${index}-${blog?.sys?.id}`} blog={blog} />
+                                    (relatedBlog: CardProps, index) => (
+                                        <Card
+                                            key={`${index}-${relatedBlog?.sys?.id}`}
+                                            blog={relatedBlog}
+                                        />
                                     )
                                 )}
                             </div>

@@ -51,7 +51,7 @@ exports[`Card component matches snapshot 1`] = `
       <p
         class="mt-2 mb-2 font-bold"
       >
-        authoredOn: September 4, 2024
+        authoredOn: September 6, 2024
       </p>
       <p
         class="mt-2 mb-2 font-bold text-secondary"
